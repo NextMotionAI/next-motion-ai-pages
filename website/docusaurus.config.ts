@@ -15,7 +15,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'p-shen', // Usually your GitHub org/user name.
+  organizationName: 'nextmotionai', // Usually your GitHub org/user name.
   projectName: 'next-motion-ai-pages', // Usually your repo name.
   trailingSlash: false,
 
