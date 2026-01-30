@@ -16,21 +16,7 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/app">
-            See How
-          </Link>
-        </div>
         <br />
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/app_cn">
-            产品展示
-          </Link>
-        </div>
       </div>
     </header>
   );

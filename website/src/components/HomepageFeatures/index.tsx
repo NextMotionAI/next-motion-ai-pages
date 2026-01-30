@@ -10,33 +10,33 @@ type FeatureItem = {
 };
 
 const FeatureList: FeatureItem[] = [
-  {
-    title: 'Personalized',
-    Svg: require('@site/static/img/undraw_visualization_re_1kag.svg').default,
-    description: (
-      <>
-        We personalized to your own health. We use retrieval augmented generation technology to retrieve relevant information from your medical records so that the AI systems provide information relevant to your healthcare conditions.
-      </>
-    ),
-  },
-  {
-    title: 'Private',
-    Svg: require('@site/static/img/undraw_secure_files_re_6vdh.svg').default,
-    description: (
-      <>
-        We anonymizes your data so your information is kept private. We do not store absolute dates, use blurry location data, and do not keep full personal data. You can be sure that any information we have cannot be referenced back your person.
-      </>
-    ),
-  },
-  {
-    title: 'Powered by LLMs',
-    Svg: require('@site/static/img/undraw_visionary_technology_re_jfp7.svg').default,
-    description: (
-      <>
-        Powered by state of the art large language models that are fine tuned to biomedical datasets. We also build safeguards in AI to minimize hallucinations and fake information. We strive to create models that truely understand biology and healthcare.
-      </>
-    ),
-  },
+  // {
+  //   title: 'Personalized',
+  //   Svg: require('@site/static/img/undraw_visualization_re_1kag.svg').default,
+  //   description: (
+  //     <>
+  //       We personalized to your own health. We use retrieval augmented generation technology to retrieve relevant information from your medical records so that the AI systems provide information relevant to your healthcare conditions.
+  //     </>
+  //   ),
+  // },
+  // {
+  //   title: 'Private',
+  //   Svg: require('@site/static/img/undraw_secure_files_re_6vdh.svg').default,
+  //   description: (
+  //     <>
+  //       We anonymizes your data so your information is kept private. We do not store absolute dates, use blurry location data, and do not keep full personal data. You can be sure that any information we have cannot be referenced back your person.
+  //     </>
+  //   ),
+  // },
+  // {
+  //   title: 'Powered by LLMs',
+  //   Svg: require('@site/static/img/undraw_visionary_technology_re_jfp7.svg').default,
+  //   description: (
+  //     <>
+  //       Powered by state of the art large language models that are fine tuned to biomedical datasets. We also build safeguards in AI to minimize hallucinations and fake information. We strive to create models that truely understand biology and healthcare.
+  //     </>
+  //   ),
+  // },
 ];
 
 function Feature({ title, Svg, description }: FeatureItem) {
