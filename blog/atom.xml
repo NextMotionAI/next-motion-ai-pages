@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://www.nextmotionai.com/blog</id>
+    <id>https://www.nextmotionai.com/next-motion-ai-pages/blog</id>
     <title>Next Motion AI Blog</title>
     <updated>2024-07-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://www.nextmotionai.com/blog"/>
+    <link rel="alternate" href="https://www.nextmotionai.com/next-motion-ai-pages/blog"/>
     <subtitle>Next Motion AI Blog</subtitle>
-    <icon>https://www.nextmotionai.com/img/logo_96.png</icon>
+    <icon>https://www.nextmotionai.com/next-motion-ai-pages/img/logo_96.png</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
-        <id>https://www.nextmotionai.com/blog/welcome</id>
-        <link href="https://www.nextmotionai.com/blog/welcome"/>
+        <id>https://www.nextmotionai.com/next-motion-ai-pages/blog/welcome</id>
+        <link href="https://www.nextmotionai.com/next-motion-ai-pages/blog/welcome"/>
         <updated>2024-07-18T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Welcome to Next Motion AI homepage. We will post news and media as we develop the product!]]></summary>
         <content type="html"><![CDATA[<p>Welcome to Next Motion AI homepage. We will post news and media as we develop the product!</p>]]></content>

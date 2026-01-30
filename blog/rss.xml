@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Next Motion AI Blog</title>
-        <link>https://www.nextmotionai.com/blog</link>
+        <link>https://www.nextmotionai.com/next-motion-ai-pages/blog</link>
         <description>Next Motion AI Blog</description>
         <lastBuildDate>Thu, 18 Jul 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,8 +10,8 @@
         <language>en</language>
         <item>
             <title><![CDATA[Welcome]]></title>
-            <link>https://www.nextmotionai.com/blog/welcome</link>
-            <guid>https://www.nextmotionai.com/blog/welcome</guid>
+            <link>https://www.nextmotionai.com/next-motion-ai-pages/blog/welcome</link>
+            <guid>https://www.nextmotionai.com/next-motion-ai-pages/blog/welcome</guid>
             <pubDate>Thu, 18 Jul 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Welcome to Next Motion AI homepage. We will post news and media as we develop the product!]]></description>
             <content:encoded><![CDATA[<p>Welcome to Next Motion AI homepage. We will post news and media as we develop the product!</p>]]></content:encoded>
