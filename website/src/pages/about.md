@@ -1,9 +1,13 @@
 ---
+layout: ../layouts/ArticleLayout.astro
 title: About
-description: About Description
-# hide_table_of_contents: true
+description: Learn about Next Motion AI and get in touch.
 ---
 
-# Contact
+# About Next Motion AI
 
-For questions email [contact@nextmotionai.com](mail:contact@nextmotionai.com)
+Next Motion AI explores the intersection of reinforcement learning and computational biology. We are interested in how adaptive methods might help navigate complex design spaces and make better use of feedback.
+
+Our work is research in progress. We believe promising ideas deserve careful evaluation, clear communication, and an honest account of their limits.
+
+For questions or collaboration, email [contact@nextmotionai.com](mailto:contact@nextmotionai.com).

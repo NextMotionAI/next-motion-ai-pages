@@ -1,4 +1,5 @@
 ---
+layout: ../layouts/ArticleLayout.astro
 title: Markdown page example
 ---
 

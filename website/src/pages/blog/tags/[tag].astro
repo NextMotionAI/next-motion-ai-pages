@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import PostList from '../../../components/PostList.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag, posts: posts.filter((post) => post.data.published && post.data.tags.includes(tag)) },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout title={`Posts tagged ${tag}`} description={`Next Motion AI posts tagged ${tag}.`}>
+  <main id="main-content" class="container article-shell">
+    <a class="back-link" href="/blog/tags">← Tags</a>
+    <h1 class="page-heading">Posts tagged {tag}</h1>
+    {posts.length ? <PostList posts={posts} /> : <p>No research notes published yet.</p>}
+  </main>
+</BaseLayout>

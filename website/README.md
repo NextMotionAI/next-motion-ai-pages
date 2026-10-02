@@ -1,41 +1,33 @@
 # Website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This Astro site builds static pages for [www.nextmotionai.com](https://www.nextmotionai.com). Use Node.js 22.12 or newer and npm.
 
-### Installation
+## Develop and verify
 
-```
-$ yarn
-```
+From this directory:
 
-### Local Development
-
-```
-$ yarn start
+```sh
+npm ci
+npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+`npm run build` writes the production site to `dist/`, and `npm run preview` serves that build locally. `npm run typecheck` checks Astro and TypeScript files. `npm test` builds the site and checks its public routes, content, links, feeds, analytics, and domain file.
 
-### Build
+## Content
 
-```
-$ yarn build
-```
+- Edit the home page in `src/pages/index.astro` and the common header, footer, and metadata in `src/layouts/BaseLayout.astro`.
+- Edit the product, about, and example pages in `src/pages/`. Markdown pages use `src/layouts/ArticleLayout.astro`.
+- Add research notes as Markdown files in `src/content/blog/` with `title`, `description`, `date`, `author`, and `tags` frontmatter. Set `published: false` to keep a legacy post's URL available without listing it in the journal archive, feeds, or sitemap. New posts are published by default.
+- Put public images and other static assets in `public/`.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Deploy to GitHub Pages
 
-### Deployment
+The existing deployment uses the `gh-pages` branch. `public/CNAME` contains the custom domain, and `public/.nojekyll` allows GitHub Pages to serve Astro's `_astro` assets.
 
-Using SSH:
+After reviewing the built site, publish it with:
 
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
+```sh
+npm run deploy
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+This command builds the site and pushes `dist/` to the `gh-pages` branch of `nextmotionai/next-motion-ai-pages`, matching the previous Docusaurus deployment target. This checkout's `origin` may point to a different repository. GitHub Pages should be configured to serve the root of the organization repo's `gh-pages` branch. Deployment is a separate action from local verification.

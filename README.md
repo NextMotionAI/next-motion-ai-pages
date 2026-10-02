@@ -1,13 +1,13 @@
-# next-motion-ai-pages
+# Next Motion AI website
 
-Github pages for nextmotionai.com
+The public site at [www.nextmotionai.com](https://www.nextmotionai.com) is a static Astro project in [`website/`](website/). GitHub Pages serves the generated files; no application server is required.
 
-## Commands
+## Local development
 
-### Dev
+```sh
+cd website
+npm ci
+npm run start
+```
 
-`npm run start`
-
-### Deploy
-
-`USE_SSH=true npm run deploy`
+Run `npm run typecheck` for Astro and TypeScript diagnostics, and `npm test` to build and check the generated pages. See [website/README.md](website/README.md) for content and deployment details.

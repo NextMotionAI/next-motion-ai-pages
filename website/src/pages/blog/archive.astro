@@ -1,0 +1,15 @@
+---
+import PostList from '../../components/PostList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedPosts } from '../../lib/posts';
+
+const posts = (await getPublishedPosts()).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Journal archive" description="All posts from Next Motion AI.">
+  <main id="main-content" class="container article-shell">
+    <a class="back-link" href="/blog">← Journal</a>
+    <h1 class="page-heading">Journal archive</h1>
+    {posts.length ? <PostList posts={posts} /> : <p>No research notes published yet.</p>}
+  </main>
+</BaseLayout>

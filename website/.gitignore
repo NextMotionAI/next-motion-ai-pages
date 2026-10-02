@@ -2,10 +2,12 @@
 /node_modules
 
 # Production
+/dist
 /build
 
 # Generated files
-.docusaurus
+/.astro
+/.docusaurus
 .cache-loader
 
 # Misc

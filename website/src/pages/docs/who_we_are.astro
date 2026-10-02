@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Approach" description="Explore how Next Motion AI is thinking about adaptive search and evidence in computational biology.">
+  <main id="main-content">
+    <section class="approach-hero">
+      <div class="container approach-hero-grid">
+        <div class="approach-intro">
+          <p class="eyebrow"><span class="eyebrow-line"></span> The Challenge / Our Approach</p>
+          <h1>Finding a direction in a field of <em>possibilities.</em></h1>
+          <p>Biological design can involve an enormous space of possibilities. When exhaustive search is impractical, choosing what to explore next becomes part of the scientific problem.</p>
+        </div>
+        <div class="approach-map" aria-hidden="true">
+          <svg viewBox="0 0 560 500" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <defs>
+              <linearGradient id="map-base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dbeae0"/><stop offset="1" stop-color="#bed9da"/></linearGradient>
+              <linearGradient id="map-route" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#366d94"/><stop offset="1" stop-color="#2e897b"/></linearGradient>
+              <pattern id="map-grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#5b8a89" stroke-opacity=".16" stroke-width="1"/></pattern>
+            </defs>
+            <rect x="24" y="28" width="512" height="430" rx="22" fill="url(#map-base)"/>
+            <rect x="24" y="28" width="512" height="430" rx="22" fill="url(#map-grid)"/>
+            <g fill="none" stroke="#53838b" stroke-opacity=".42" stroke-width="1.5" stroke-linecap="round">
+              <path d="M69 380c57-45 78-67 134-54s75-34 98-99 79-56 190-144"/>
+              <path d="M69 380c75-1 110-24 173-5 63 20 121-17 184-96"/>
+              <path d="M69 380c43-92 84-123 134-131 49-8 80-43 98-111"/>
+              <path d="M203 326c-14-60-12-98 0-149"/>
+              <path d="M301 227c31 47 70 57 125 52"/>
+            </g>
+            <path d="M69 380c57-45 78-67 134-54s75-34 98-99 79-56 190-144" fill="none" stroke="url(#map-route)" stroke-width="4" stroke-linecap="round"/>
+            <g fill="#eff8ee" stroke="#427b86" stroke-width="2"><circle cx="203" cy="177" r="6"/><circle cx="301" cy="138" r="6"/><circle cx="242" cy="375" r="6"/><circle cx="426" cy="279" r="6"/></g>
+            <circle cx="69" cy="380" r="8" fill="#366d94"/><circle cx="203" cy="326" r="12" fill="#f5faf2" stroke="#367a86" stroke-width="3"/><circle cx="301" cy="227" r="12" fill="#f5faf2" stroke="#367a86" stroke-width="3"/><circle cx="491" cy="83" r="9" fill="#2e897b"/>
+            <g fill="#436c70" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5"><text x="55" y="414">START</text><text x="445" y="64">NEW DIRECTION</text></g>
+          </svg>
+          <span class="approach-map-label">CHOICE → FEEDBACK → NEXT QUESTION</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-problem section-space" aria-labelledby="problem-heading">
+      <div class="container approach-problem-grid">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE RESEARCH DIRECTION</p>
+        <div>
+          <h2 id="problem-heading" class="display-heading">Search should learn from <em>each step.</em></h2>
+          <p class="section-lede">Useful directions may depend on combinations, constraints, and tradeoffs that are hard to understand by examining one candidate at a time. We are exploring how reinforcement learning might guide iterative search in computational biology—and where simpler methods may work just as well.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-process section-space" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-heading-row">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> A WAY TO THINK ABOUT DISCOVERY</p><h2 id="process-heading" class="display-heading">A question. A choice. <em>A clearer picture.</em></h2></div>
+          <p>This is a research direction, not a claim of a finished system. Each step should make the next decision more informed.</p>
+        </div>
+        <div class="approach-steps">
+          <article class="approach-step">
+            <span class="approach-step-number">01 / FRAME</span>
+            <svg viewBox="0 0 220 110" aria-hidden="true" focusable="false"><g fill="none" stroke="#779e9b" stroke-width="1.3"><path d="M20 24h180v62H20z" stroke-dasharray="3 5"/><path d="M48 40h124v30H48z"/><circle cx="110" cy="55" r="18"/></g><circle cx="110" cy="55" r="4" fill="#397e8b"/></svg>
+            <h3>Define the question</h3>
+            <p>Make the objective, constraints, and available feedback explicit before searching.</p>
+          </article>
+          <article class="approach-step">
+            <span class="approach-step-number">02 / EXPLORE</span>
+            <svg viewBox="0 0 220 110" aria-hidden="true" focusable="false"><g fill="none" stroke="#779e9b" stroke-width="1.3" stroke-linecap="round"><path d="M17 83c48-12 57-50 102-48 34 2 57 27 84 15"/><path d="M17 83c51 3 70-10 112 6 35 13 54-8 74-29"/></g><path d="M17 83c48-12 57-50 102-48 34 2 57 27 84 15" fill="none" stroke="#397e8b" stroke-width="2.5"/><g fill="#f8faf5" stroke="#397e8b" stroke-width="2"><circle cx="17" cy="83" r="4"/><circle cx="119" cy="35" r="4"/><circle cx="203" cy="50" r="4"/></g></svg>
+            <h3>Choose what to explore</h3>
+            <p>Use what has been observed to decide which possibility is worth investigating next.</p>
+          </article>
+          <article class="approach-step">
+            <span class="approach-step-number">03 / EVALUATE</span>
+            <svg viewBox="0 0 220 110" aria-hidden="true" focusable="false"><path d="M20 82h180M30 72l45-27 44 17 42-39 35 12" fill="none" stroke="#779e9b" stroke-width="1.3"/><path d="M30 72l45-27 44 17 42-39 35 12" fill="none" stroke="#397e8b" stroke-width="2.5"/><g fill="#f8faf5" stroke="#397e8b" stroke-width="2"><circle cx="30" cy="72" r="4"/><circle cx="75" cy="45" r="4"/><circle cx="119" cy="62" r="4"/><circle cx="161" cy="23" r="4"/><circle cx="196" cy="35" r="4"/></g></svg>
+            <h3>Test what the evidence supports</h3>
+            <p>Compare against alternatives and stay clear about what a computational signal can show.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-evidence section-space" aria-labelledby="evidence-heading">
+      <div class="container approach-evidence-grid">
+        <div><p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> LEARNING WITH CARE</p><h2 id="evidence-heading">A useful result needs <em>a careful reading.</em></h2></div>
+        <div><p>Computational signals can help frame hypotheses, but they do not by themselves establish biological success. Reproducible work, fair comparisons, and clear limits on what a result shows shape how we think about a future discovery engine for biology.</p><a class="text-link approach-evidence-link" href="/projects">See our first research focus <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
