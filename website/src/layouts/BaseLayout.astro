@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { title, description, robots } = Astro.props;
-const pageTitle = title === 'Next Motion AI' ? title : `${title} | Next Motion AI`;
+const pageTitle = title.startsWith('Next Motion AI |') ? title : `${title} | Next Motion AI`;
 const canonicalPath = Astro.url.pathname === '/index.html'
   ? '/'
   : Astro.url.pathname.replace(/\.html$/, '') || '/';
@@ -53,7 +53,6 @@ const year = new Date().getFullYear();
           <a href="/docs/who_we_are" aria-current={Astro.url.pathname.startsWith('/docs/') ? 'page' : undefined}>Approach</a>
           <a href="/projects" aria-current={Astro.url.pathname.startsWith('/projects') ? 'page' : undefined}>Projects</a>
           <a href="/blog" aria-current={Astro.url.pathname.startsWith('/blog') ? 'page' : undefined}>Journal</a>
-          <a href="/about" aria-current={Astro.url.pathname.startsWith('/about') ? 'page' : undefined}>About</a>
           <a class="nav-contact" href="mailto:contact@nextmotionai.com">Contact <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
@@ -73,7 +72,6 @@ const year = new Date().getFullYear();
           <a href="/docs/who_we_are">Approach</a>
           <a href="/projects">Projects</a>
           <a href="/blog">Journal</a>
-          <a href="/about">About</a>
         </nav>
       </div>
     </footer>

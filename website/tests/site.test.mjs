@@ -5,8 +5,7 @@ import test from 'node:test';
 
 const dist = new URL('../dist/', import.meta.url).pathname;
 const routes = new Map([
-  ['index.html', 'Building a discovery engine for biology.'],
-  ['about.html', 'contact@nextmotionai.com'],
+  ['index.html', 'Reinforcement learning for biological discovery'],
   ['markdown-page.html', 'Markdown page example'],
   ['docs/who_we_are.html', 'The Challenge'],
   ['projects.html', 'peptide–MHC binding'],
@@ -32,19 +31,22 @@ test('all existing public routes are built with their content', () => {
 
 test('home page retains site metadata, navigation, and analytics', () => {
   const html = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.match(html, /<title>Next Motion AI<\/title>/);
+  assert.match(html, /<title>Next Motion AI \| Reinforcement Learning for Computational Biology<\/title>/);
   assert.match(html, /<meta name="description"/);
+  assert.match(html, /name="description" content="[^"]*peptide–MHC binding/);
   assert.equal(html.match(/<link rel="canonical" href="([^"]+)"/)?.[1], 'https://www.nextmotionai.com/');
   assert.match(html, /href="\/docs\/who_we_are"/);
   assert.match(html, /href="\/projects"/);
   assert.match(html, /href="\/blog"/);
-  assert.match(html, /href="\/about"/);
+  assert.doesNotMatch(html, /href="\/about"/);
   assert.match(html, /G-YLHJEZJCWG/);
 });
 
 test('public homepage introduces exploratory research and a working contact path', () => {
   const html = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.match(html, /<h1[^>]*>[^<]*Building a discovery engine for biology\./);
+  assert.match(html, /<h1[^>]*>[^<]*Reinforcement learning for biological discovery/);
+  assert.match(html, /peptide–MHC binding/);
+  assert.match(html, /href="\/projects"[^>]*>Our first research focus/);
   assert.match(html, /href="\/docs\/who_we_are"[^>]*>Explore our approach/);
   assert.match(html, /href="mailto:contact@nextmotionai\.com"/);
   assert.doesNotMatch(html, /WeChat|Discord/);
@@ -52,13 +54,14 @@ test('public homepage introduces exploratory research and a working contact path
 
 test('approach copy describes research without exposing internal study details', () => {
   const html = readFileSync(join(dist, 'docs/who_we_are.html'), 'utf8');
-  assert.match(html, /We are exploring/);
-  assert.match(html, /Define the question/);
-  assert.match(html, /Choose what to explore/);
-  assert.match(html, /Test what the evidence supports/);
+  assert.match(html, /<title>Reinforcement Learning Approach \| Next Motion AI<\/title>/);
+  assert.match(html, /peptide–MHC binding/i);
+  assert.match(html, /prioritiz/i);
+  assert.match(html, /experimental/i);
+  assert.doesNotMatch(html, /one (?:question|candidate) at a time|one by one/i);
   assert.match(html, /href="\/projects"/);
   assert.doesNotMatch(html, /is a reinforcement learning \(RL\) platform/i);
-  assert.doesNotMatch(html, /\b(?:peptide|MHC|HLA|allele|MHCflurry|PPO)\b/i);
+  assert.doesNotMatch(html, /\b(?:HLA|allele|MHCflurry|PPO)\b/i);
 });
 
 test('journal highlights the first research note and keeps the legacy draft out of listings', () => {
@@ -84,17 +87,29 @@ test('first research note has article metadata and states its current limits', (
 
 test('projects page describes a research question and its limits', () => {
   const html = readFileSync(join(dist, 'projects.html'), 'utf8');
+  assert.match(html, /<title>Peptide–MHC Binding Research \| Next Motion AI<\/title>/);
   assert.match(html, /peptide–MHC binding/);
   assert.match(html, /exploratory computational research/i);
   assert.match(html, /binding alone does not establish/i);
-  assert.doesNotMatch(html, /MHCflurry|PPO|training budget|candidate length/i);
+  assert.doesNotMatch(html, /\b(?:MHCflurry|PPO|training budget|candidate length)\b/i);
   const home = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.doesNotMatch(home, /Peptide–MHC|allele/i);
+  assert.match(home, /peptide–MHC binding/);
+  assert.doesNotMatch(home, /\b(?:MHCflurry|PPO|training budget|candidate length)\b/i);
   assert.match(readFileSync(join(dist, 'sitemap.xml'), 'utf8'), /https:\/\/www\.nextmotionai\.com\/projects/);
+  assert.doesNotMatch(readFileSync(join(dist, 'sitemap.xml'), 'utf8'), /\/about/);
 });
 
 test('generated CNAME contains the live domain', () => {
   assert.equal(readFileSync(join(dist, 'CNAME'), 'utf8').trim(), 'www.nextmotionai.com');
+});
+
+test('robots and sitemap index useful pages without the template example', () => {
+  const robots = readFileSync(join(dist, 'robots.txt'), 'utf8');
+  assert.match(robots, /^User-agent: \*\nAllow: \/\n/m);
+  assert.match(robots, /Sitemap: https:\/\/www\.nextmotionai\.com\/sitemap\.xml/);
+  const sitemap = readFileSync(join(dist, 'sitemap.xml'), 'utf8');
+  assert.doesNotMatch(sitemap, /\/markdown-page/);
+  assert.match(readFileSync(join(dist, 'markdown-page.html'), 'utf8'), /name="robots" content="noindex"/);
 });
 
 test('existing XML feeds and sitemap remain available', () => {

@@ -7,8 +7,6 @@ export const GET: APIRoute = async ({ site }) => {
   const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
   const paths = [
     '/',
-    '/about',
-    '/markdown-page',
     '/docs/who_we_are',
     '/projects',
     '/blog',

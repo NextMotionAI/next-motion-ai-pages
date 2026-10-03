@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Projects"
+  title="Peptide–MHC Binding Research"
   description="Explore Next Motion AI's first research focus: using adaptive search to study peptide–MHC binding."
 >
   <main id="main-content">
@@ -14,27 +14,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h1>Starting with a question at the edge of <em>immunity.</em></h1>
           <p>Our first research focus is peptide–MHC binding: one early step in how the immune system encounters pieces of the biological world.</p>
         </div>
-        <div class="project-figure" aria-hidden="true">
-          <svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" focusable="false">
-            <defs>
-              <linearGradient id="project-surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8e8dc"/><stop offset="1" stop-color="#c2d8dc"/></linearGradient>
-              <linearGradient id="project-path" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4e82a7"/><stop offset="1" stop-color="#2b7970"/></linearGradient>
-            </defs>
-            <path d="M71 229C84 115 185 62 296 62c119 0 208 75 204 184-4 106-94 169-208 176C176 429 57 347 71 229Z" fill="url(#project-surface)"/>
-            <g fill="none" stroke="#5d868a" stroke-opacity=".34" stroke-width="1.2">
-              <path d="M111 209c24-88 102-124 184-124 90 0 171 56 176 146 5 81-71 142-176 150-96 7-184-64-184-172Z"/>
-              <path d="M137 209c19-67 84-99 158-99 78 0 147 49 151 122 5 69-62 117-151 122-79 5-158-48-158-145Z"/>
-              <path d="M163 211c17-48 69-75 132-75 69 0 123 39 126 98 3 56-54 91-126 95-64 3-132-38-132-118Z"/>
-              <path d="M190 215c12-32 52-53 104-53 57 0 98 29 101 72 3 43-45 67-101 69-51 2-104-29-104-88Z"/>
-            </g>
-            <path d="M93 299c78-29 117-46 171-31 59 17 111 3 207-92" fill="none" stroke="url(#project-path)" stroke-width="3" stroke-linecap="round"/>
-            <path d="M176 231c43 7 69 20 88 37m58-62c-13 32-32 51-58 62m89 38c-30-9-61-22-89-38" fill="none" stroke="#679296" stroke-opacity=".65" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="264" cy="268" r="12" fill="#f8faf3" stroke="#327973" stroke-width="3"/>
-            <circle cx="93" cy="299" r="5" fill="#4982a2"/><circle cx="471" cy="176" r="6" fill="#2b7970"/>
-            <circle cx="176" cy="231" r="4" fill="#679296"/><circle cx="322" cy="206" r="4" fill="#679296"/><circle cx="353" cy="306" r="4" fill="#679296"/>
-          </svg>
-          <span class="project-figure-label">AN OPEN RESEARCH QUESTION <span>↗</span></span>
-        </div>
+        <figure class="project-figure">
+          <img src="/img/peptide-mhc-concept.webp" alt="Conceptual illustration of a short peptide seated in an MHC protein binding groove" width="1536" height="1024" />
+          <figcaption class="project-figure-label">ILLUSTRATIVE VIEW · NOT A RESEARCH RESULT</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -45,7 +28,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h2 id="focus-heading" class="display-heading">A small interaction with <em>wide implications.</em></h2>
           <div class="project-columns">
             <p>MHC proteins can bind short peptide fragments and display them for immune surveillance. Which peptides bind depends in part on the MHC variant. That makes binding a useful question to study, even though it is only one part of a larger biological process.</p>
-            <p>We are asking whether adaptive search can use binding feedback to find promising peptide candidates more deliberately. Each result would inform what to examine next, and each candidate would still need careful evaluation.</p>
+            <p>We’re asking whether adaptive search can learn from binding feedback and prioritize promising peptides across a large candidate space. The goal is a better-supported set for follow-up evaluation, with biological claims reserved for appropriate experiments.</p>
           </div>
         </div>
       </div>
@@ -67,7 +50,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="project-outro section-space">
       <div class="container project-outro-grid">
         <div><p class="eyebrow"><span class="eyebrow-line"></span> THE BROADER IDEA</p><h2 class="display-heading">Learn from each search. <em>Ask a better question.</em></h2></div>
-        <div><p>This first focus is one place to explore how reinforcement learning might contribute to biological discovery.</p><a class="text-link" href="/docs/who_we_are">Read about our approach <span aria-hidden="true">↗</span></a></div>
+        <div><p>This first focus is one place to explore how reinforcement learning might contribute to biological discovery. Our first research note explains the question and how we plan to evaluate it.</p><a class="text-link" href="/blog/2026-10-02-learning-from-feedback-in-peptide-discovery">Read the first research note <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
   </main>
