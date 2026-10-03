@@ -12,18 +12,24 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description} robots={post.data.published ? undefined : 'noindex'}>
-  <main id="main-content" class="container article-shell">
-    <article class="prose">
-      <a class="back-link" href="/blog">← Journal</a>
-      <h1>{post.data.title}</h1>
-      <p class="post-meta">
-        <time datetime={post.data.date.toISOString().slice(0, 10)}>
-          {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
-        </time>
-        · {post.data.author}
-      </p>
-      <Content />
-      <p class="tag-list">{post.data.tags.map((tag) => <a class="tag" href={`/blog/tags/${tag}`}>{tag}</a>)}</p>
+  <main id="main-content" class="journal-article-shell">
+    <article class="journal-article">
+      <header class="journal-article-header">
+        <div class="container">
+          <a class="journal-return" href="/blog">← Back to Journal</a>
+          <p class="eyebrow"><span class="eyebrow-line"></span> RESEARCH NOTE / NEXT MOTION AI</p>
+          <h1>{post.data.title}</h1>
+          <p class="journal-article-deck">{post.data.description}</p>
+          <div class="journal-article-meta"><span>{post.data.author}</span><span aria-hidden="true">·</span><time datetime={post.data.date.toISOString().slice(0, 10)}>{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></div>
+        </div>
+      </header>
+      <div class="container journal-article-content">
+        <div class="journal-article-body prose"><Content /></div>
+        <div class="journal-article-end">
+          <p class="tag-list">{post.data.tags.map((tag) => <a class="tag" href={`/blog/tags/${tag}`}>{tag.replaceAll('-', ' ')}</a>)}</p>
+          <a class="text-link" href="/blog/archive">More from the Journal <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
     </article>
   </main>
 </BaseLayout>

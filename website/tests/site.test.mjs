@@ -10,10 +10,12 @@ const routes = new Map([
   ['markdown-page.html', 'Markdown page example'],
   ['docs/who_we_are.html', 'The Challenge'],
   ['projects.html', 'peptide–MHC binding'],
-  ['blog.html', 'A space for what'],
+  ['blog.html', 'Can learning from feedback improve peptide discovery?'],
+  ['blog/2026-10-02-learning-from-feedback-in-peptide-discovery.html', 'A computational prediction is not an experimental measurement.'],
   ['blog/welcome.html', 'Welcome to Next Motion AI homepage'],
-  ['blog/archive.html', 'No research notes published yet'],
-  ['blog/tags.html', 'No research notes published yet'],
+  ['blog/archive.html', 'Can learning from feedback improve peptide discovery?'],
+  ['blog/tags.html', 'peptide discovery'],
+  ['blog/tags/peptide-discovery.html', 'Can learning from feedback improve peptide discovery?'],
   ['blog/tags/news.html', 'No research notes published yet'],
   ['404.html', 'Page not found'],
 ]);
@@ -59,16 +61,25 @@ test('approach copy describes research without exposing internal study details',
   assert.doesNotMatch(html, /\b(?:peptide|MHC|HLA|allele|MHCflurry|PPO)\b/i);
 });
 
-test('journal is an open space until research updates are ready', () => {
+test('journal highlights the first research note and keeps the legacy draft out of listings', () => {
   const html = readFileSync(join(dist, 'blog.html'), 'utf8');
-  assert.match(html, /No research notes published yet/);
-  assert.match(html, /href="\/projects"/);
-  assert.doesNotMatch(html, /Welcome to Next Motion AI homepage|All posts|Tags/);
+  assert.match(html, /href="\/blog\/2026-10-02-learning-from-feedback-in-peptide-discovery"/);
+  assert.doesNotMatch(html, /No research notes published yet|Welcome to Next Motion AI homepage/);
   for (const file of ['blog/archive.html', 'blog/tags.html', 'blog/tags/news.html']) {
     const page = readFileSync(join(dist, file), 'utf8');
-    assert.doesNotMatch(page, /Welcome to Next Motion AI homepage|<article class="post-card"/);
+    assert.doesNotMatch(page, /Welcome to Next Motion AI homepage/);
   }
+  assert.doesNotMatch(readFileSync(join(dist, 'blog/tags/news.html'), 'utf8'), /<article class="post-card"/);
   assert.match(readFileSync(join(dist, 'blog/welcome.html'), 'utf8'), /name="robots" content="noindex"/);
+});
+
+test('first research note has article metadata and states its current limits', () => {
+  const html = readFileSync(join(dist, 'blog/2026-10-02-learning-from-feedback-in-peptide-discovery.html'), 'utf8');
+  assert.match(html, /<h1[^>]*>Can learning from feedback improve peptide discovery\?<\/h1>/);
+  assert.match(html, /<time datetime="2026-10-02">October 2, 2026<\/time>/);
+  assert.match(html, /There are no experimental results to report yet/);
+  assert.match(html, /A computational prediction is not an experimental measurement/);
+  assert.doesNotMatch(html, /name="robots" content="noindex"/);
 });
 
 test('projects page describes a research question and its limits', () => {
@@ -96,8 +107,8 @@ test('existing XML feeds and sitemap remain available', () => {
   }
   const rss = readFileSync(join(dist, 'blog/rss.xml'), 'utf8');
   const atom = readFileSync(join(dist, 'blog/atom.xml'), 'utf8');
-  assert.doesNotMatch(rss, /<item>/);
-  assert.doesNotMatch(atom, /<entry>/);
+  assert.match(rss, /<item>.*learning-from-feedback-in-peptide-discovery/);
+  assert.match(atom, /<entry>.*learning-from-feedback-in-peptide-discovery/);
   assert.match(rss, /<channel>.*<link>https:\/\/www\.nextmotionai\.com\/blog<\/link>/);
 });
 

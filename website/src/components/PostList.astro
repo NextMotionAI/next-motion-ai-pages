@@ -20,7 +20,7 @@ const { posts } = Astro.props;
       </p>
       <p>{post.data.description}</p>
       <p class="tag-list">
-        {post.data.tags.map((tag) => <a class="tag" href={`/blog/tags/${tag}`}>{tag}</a>)}
+        {post.data.tags.map((tag) => <a class="tag" href={`/blog/tags/${tag}`}>{tag.replaceAll('-', ' ')}</a>)}
       </p>
     </article>
   ))}
