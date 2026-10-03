@@ -31,4 +31,4 @@ After reviewing the built site, publish it with:
 npm run deploy
 ```
 
-This command builds the site and pushes `dist/` to the `gh-pages` branch of `nextmotionai/next-motion-ai-pages`, matching the previous Docusaurus deployment target. This checkout's `origin` may point to a different repository. GitHub Pages should be configured to serve the root of the organization repo's `gh-pages` branch. Deployment is a separate action from local verification.
+This command builds the site and pushes `dist/` to the `gh-pages` branch of `nextmotionai/next-motion-ai-pages`. This checkout's `origin` may point to a different repository. GitHub Pages should be configured to serve the root of the organization repo's `gh-pages` branch. Deployment is a separate action from local verification.

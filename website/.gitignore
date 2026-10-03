@@ -7,7 +7,6 @@
 
 # Generated files
 /.astro
-/.docusaurus
 .cache-loader
 
 # Misc
