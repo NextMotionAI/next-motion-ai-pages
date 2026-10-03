@@ -7,12 +7,12 @@ export const GET: APIRoute = async ({ site }) => {
   const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
   const paths = [
     '/',
-    '/docs/who_we_are',
+    '/approach',
     '/projects',
-    '/blog',
-    ...(posts.length ? ['/blog/archive', '/blog/tags'] : []),
-    ...posts.map((post) => `/blog/${post.id}`),
-    ...tags.map((tag) => `/blog/tags/${tag}`),
+    '/journal',
+    ...(posts.length ? ['/journal/archive', '/journal/tags'] : []),
+    ...posts.map((post) => `/journal/${post.id}`),
+    ...tags.map((tag) => `/journal/tags/${tag}`),
   ];
   const origin = site ?? new URL('https://www.nextmotionai.com');
   const urls = paths.map((path) => `<url><loc>${escapeXml(new URL(path, origin).href)}</loc></url>`).join('');

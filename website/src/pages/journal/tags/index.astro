@@ -8,8 +8,8 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 
 <BaseLayout title="Journal tags" description="Browse Next Motion AI journal topics.">
   <main id="main-content" class="container article-shell">
-    <a class="back-link" href="/blog">← Journal</a>
+    <a class="back-link" href="/journal">← Journal</a>
     <h1 class="page-heading">Tags</h1>
-    {tags.length ? <p class="tag-list">{tags.map((tag) => <a class="tag" href={`/blog/tags/${tag}`}>{tag.replaceAll('-', ' ')}</a>)}</p> : <p>No research notes published yet.</p>}
+    {tags.length ? <p class="tag-list">{tags.map((tag) => <a class="tag" href={`/journal/tags/${tag}`}>{tag.replaceAll('-', ' ')}</a>)}</p> : <p>No research notes published yet.</p>}
   </main>
 </BaseLayout>

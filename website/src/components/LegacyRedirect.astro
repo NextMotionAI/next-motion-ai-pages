@@ -1,0 +1,22 @@
+---
+interface Props {
+  destination: string;
+}
+
+const { destination } = Astro.props;
+const canonical = new URL(destination, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${destination}`} />
+    <link rel="canonical" href={canonical} />
+    <title>Page moved | Next Motion AI</title>
+  </head>
+  <body>
+    <p>This page has moved to <a href={destination}>{destination}</a>.</p>
+  </body>
+</html>

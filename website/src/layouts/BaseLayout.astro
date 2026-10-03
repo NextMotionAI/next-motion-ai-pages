@@ -30,8 +30,8 @@ const year = new Date().getFullYear();
     <meta property="og:image" content={socialImage} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/img/logo_96.png" />
-    <link rel="alternate" type="application/rss+xml" title="Next Motion AI Journal RSS" href="/blog/rss.xml" />
-    <link rel="alternate" type="application/atom+xml" title="Next Motion AI Journal Atom" href="/blog/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Next Motion AI Journal RSS" href="/journal/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Next Motion AI Journal Atom" href="/journal/atom.xml" />
     <title>{pageTitle}</title>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-YLHJEZJCWG"></script>
     <script is:inline>
@@ -50,9 +50,9 @@ const year = new Date().getFullYear();
           <span>Next Motion <span class="brand-ai">AI</span></span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="/docs/who_we_are" aria-current={Astro.url.pathname.startsWith('/docs/') ? 'page' : undefined}>Approach</a>
+          <a href="/approach" aria-current={Astro.url.pathname.replace(/\.html$/, '') === '/approach' ? 'page' : undefined}>Approach</a>
           <a href="/projects" aria-current={Astro.url.pathname.startsWith('/projects') ? 'page' : undefined}>Projects</a>
-          <a href="/blog" aria-current={Astro.url.pathname.startsWith('/blog') ? 'page' : undefined}>Journal</a>
+          <a href="/journal" aria-current={Astro.url.pathname.startsWith('/journal') ? 'page' : undefined}>Journal</a>
           <a class="nav-contact" href="mailto:contact@nextmotionai.com">Contact <span aria-hidden="true">↗</span></a>
         </nav>
       </div>
@@ -69,9 +69,9 @@ const year = new Date().getFullYear();
       <div class="container footer-bottom">
         <p>© {year} Next Motion, Inc.</p>
         <nav aria-label="Footer navigation">
-          <a href="/docs/who_we_are">Approach</a>
+          <a href="/approach">Approach</a>
           <a href="/projects">Projects</a>
-          <a href="/blog">Journal</a>
+          <a href="/journal">Journal</a>
         </nav>
       </div>
     </footer>

@@ -8,7 +8,7 @@ const posts = (await getPublishedPosts()).sort((a, b) => b.data.date.getTime() -
 
 <BaseLayout title="Journal archive" description="All posts from Next Motion AI.">
   <main id="main-content" class="container article-shell">
-    <a class="back-link" href="/blog">← Journal</a>
+    <a class="back-link" href="/journal">← Journal</a>
     <h1 class="page-heading">Journal archive</h1>
     {posts.length ? <PostList posts={posts} /> : <p>No research notes published yet.</p>}
   </main>

@@ -17,7 +17,7 @@ const { tag, posts } = Astro.props;
 
 <BaseLayout title={`Posts tagged ${tag}`} description={`Next Motion AI posts tagged ${tag}.`}>
   <main id="main-content" class="container article-shell">
-    <a class="back-link" href="/blog/tags">← Tags</a>
+    <a class="back-link" href="/journal/tags">← Tags</a>
     <h1 class="page-heading">Posts tagged {tag}</h1>
     {posts.length ? <PostList posts={posts} /> : <p>No research notes published yet.</p>}
   </main>

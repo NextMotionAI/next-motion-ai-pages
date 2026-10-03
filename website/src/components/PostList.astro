@@ -11,7 +11,7 @@ const { posts } = Astro.props;
 <div class="post-list">
   {posts.map((post) => (
     <article class="post-card">
-      <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
+      <h2><a href={`/journal/${post.id}`}>{post.data.title}</a></h2>
       <p class="post-meta">
         <time datetime={post.data.date.toISOString().slice(0, 10)}>
           {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
@@ -20,7 +20,7 @@ const { posts } = Astro.props;
       </p>
       <p>{post.data.description}</p>
       <p class="tag-list">
-        {post.data.tags.map((tag) => <a class="tag" href={`/blog/tags/${tag}`}>{tag.replaceAll('-', ' ')}</a>)}
+        {post.data.tags.map((tag) => <a class="tag" href={`/journal/tags/${tag}`}>{tag.replaceAll('-', ' ')}</a>)}
       </p>
     </article>
   ))}

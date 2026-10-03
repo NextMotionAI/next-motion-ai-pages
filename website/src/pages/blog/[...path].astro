@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import LegacyRedirect from '../../components/LegacyRedirect.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  const paths = [
+    'archive',
+    'tags',
+    ...tags.map((tag) => `tags/${tag}`),
+    ...posts.map((post) => post.id),
+  ];
+  return paths.map((path) => ({ params: { path }, props: { destination: `/journal/${path}` } }));
+}
+
+const { destination } = Astro.props;
+---
+
+<LegacyRedirect destination={destination} />
