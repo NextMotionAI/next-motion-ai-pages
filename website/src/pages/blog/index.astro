@@ -1,35 +1,66 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedPosts } from '../../lib/posts';
+
+const posts = (await getPublishedPosts()).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const [featured, ...morePosts] = posts;
 ---
 
-<BaseLayout title="Journal" description="An open space for future research notes from Next Motion AI.">
+<BaseLayout title="Journal" description="Research notes on machine learning, biological discovery, and what we learn along the way.">
   <main id="main-content">
-    <section class="journal-hero">
-      <div class="container journal-grid">
-        <div class="journal-intro">
-          <p class="eyebrow"><span class="eyebrow-line"></span> JOURNAL / OPEN SPACE</p>
-          <h1>A space for what <em>we learn.</em></h1>
-          <p>No research notes published yet. When our work reaches a point worth sharing, we’ll use this space for progress, methods, and the questions that emerge along the way.</p>
-          <a class="text-link" href="/projects">Explore our first research focus <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="journal-canvas" aria-hidden="true">
-          <div class="journal-canvas-head"><span>FIELD NOTES</span><span>00 / —</span></div>
-          <svg viewBox="0 0 500 390" xmlns="http://www.w3.org/2000/svg" focusable="false">
-            <defs><linearGradient id="journal-wash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e3f0e6"/><stop offset="1" stop-color="#d0e4e6"/></linearGradient></defs>
-            <path d="M29 230c24-94 103-168 218-172 113-5 208 65 221 162 15 107-74 180-218 177C115 394 1 339 29 230Z" fill="url(#journal-wash)"/>
-            <g fill="none" stroke="#6c9996" stroke-opacity=".28" stroke-width="1.2"><path d="M53 230C74 149 143 83 247 81c102-2 181 60 193 143 12 90-69 151-189 150C133 373 29 323 53 230Z"/><path d="M79 231c19-68 78-125 169-126 89-1 158 54 167 124 9 73-61 122-163 122-100 0-192-44-173-120Z"/><path d="M104 231c16-56 66-101 145-102 77-1 134 47 141 105 7 58-53 96-137 94-83-2-165-39-149-97Z"/><path d="M129 232c14-43 54-77 121-78 65-1 110 40 115 86 5 43-45 68-110 65-66-2-139-31-126-73Z"/><path d="M154 232c11-31 42-53 97-54 52-1 86 32 90 67 3 28-36 41-85 37-49-3-112-22-102-50Z"/></g>
-            <path d="M72 331c63-48 101-65 148-60 51 5 89-22 130-75" fill="none" stroke="#50838c" stroke-opacity=".6" stroke-width="1.6" stroke-dasharray="2 7" stroke-linecap="round"/>
-            <circle cx="72" cy="331" r="4" fill="#50838c"/><circle cx="350" cy="196" r="5" fill="#438c7a"/>
-          </svg>
-          <div class="journal-canvas-foot"><span>OBSERVE</span><span>QUESTION</span><span>LEARN</span></div>
-        </div>
+    <section class="journal-landing">
+      <div class="container journal-landing-head">
+        <p class="eyebrow"><span class="eyebrow-line"></span> NEXT MOTION AI / JOURNAL</p>
+        <h1>Notes from the <em>frontier of discovery.</em></h1>
+        <p>Questions, methods, and lessons from our work at the intersection of machine learning and biology.</p>
       </div>
     </section>
-    <section class="journal-bottom">
-      <div class="container journal-bottom-grid">
-        <p class="eyebrow"><span class="eyebrow-line"></span> IN THE MEANTIME</p>
-        <p>Our research direction is taking shape. You can read about how we approach discovery, or get in touch to start a conversation.</p>
-        <div><a class="text-link" href="/docs/who_we_are">Read our approach <span aria-hidden="true">↗</span></a><a class="text-link" href="mailto:contact@nextmotionai.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+
+    {featured && (
+      <section class="journal-feature-section" aria-labelledby="featured-heading">
+        <div class="container">
+          <div class="journal-section-heading">
+            <p class="eyebrow"><span class="eyebrow-line"></span> LATEST NOTE</p>
+            <a class="text-link" href="/blog/archive">View archive <span aria-hidden="true">↗</span></a>
+          </div>
+          <article class="journal-feature">
+            <div class="journal-feature-copy">
+              <p class="journal-feature-meta"><time datetime={featured.data.date.toISOString().slice(0, 10)}>{featured.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time><span aria-hidden="true">·</span>{featured.data.author}</p>
+              <h2 id="featured-heading"><a href={`/blog/${featured.id}`}>{featured.data.title}</a></h2>
+              <p>{featured.data.description}</p>
+              <a class="text-link" href={`/blog/${featured.id}`}>Read the note <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="journal-canvas" aria-hidden="true">
+              <div class="journal-canvas-head"><span>FIELD NOTES</span><span>OBSERVE → LEARN</span></div>
+              <svg viewBox="0 0 500 390" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <defs><linearGradient id="journal-wash" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e3f0e6"/><stop offset="1" stop-color="#d0e4e6"/></linearGradient></defs>
+                <path d="M29 230c24-94 103-168 218-172 113-5 208 65 221 162 15 107-74 180-218 177C115 394 1 339 29 230Z" fill="url(#journal-wash)"/>
+                <g fill="none" stroke="#6c9996" stroke-opacity=".28" stroke-width="1.2"><path d="M53 230C74 149 143 83 247 81c102-2 181 60 193 143 12 90-69 151-189 150C133 373 29 323 53 230Z"/><path d="M79 231c19-68 78-125 169-126 89-1 158 54 167 124 9 73-61 122-163 122-100 0-192-44-173-120Z"/><path d="M104 231c16-56 66-101 145-102 77-1 134 47 141 105 7 58-53 96-137 94-83-2-165-39-149-97Z"/><path d="M129 232c14-43 54-77 121-78 65-1 110 40 115 86 5 43-45 68-110 65-66-2-139-31-126-73Z"/><path d="M154 232c11-31 42-53 97-54 52-1 86 32 90 67 3 28-36 41-85 37-49-3-112-22-102-50Z"/></g>
+                <path d="M72 331c63-48 101-65 148-60 51 5 89-22 130-75" fill="none" stroke="#50838c" stroke-opacity=".6" stroke-width="1.6" stroke-dasharray="2 7" stroke-linecap="round"/>
+                <circle cx="72" cy="331" r="4" fill="#50838c"/><circle cx="350" cy="196" r="5" fill="#438c7a"/>
+              </svg>
+              <div class="journal-canvas-foot"><span>OBSERVE</span><span>QUESTION</span><span>LEARN</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    )}
+
+    {morePosts.length > 0 && (
+      <section class="journal-more-section">
+        <div class="container">
+          <p class="eyebrow"><span class="eyebrow-line"></span> MORE NOTES</p>
+          <PostList posts={morePosts} />
+        </div>
+      </section>
+    )}
+
+    <section class="journal-about">
+      <div class="container journal-about-grid">
+        <p class="eyebrow"><span class="eyebrow-line"></span> ABOUT THE JOURNAL</p>
+        <p>We’ll share the questions we ask, the choices we make, and what the evidence lets us say as the work develops.</p>
+        <a class="text-link" href="mailto:contact@nextmotionai.com">Join the conversation <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
