@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="470" viewBox="0 0 1040 470" role="img" aria-labelledby="adaptive-search-title adaptive-search-desc">
+  <title id="adaptive-search-title">A proposed feedback loop for adaptive search</title>
+  <desc id="adaptive-search-desc">First define what the available feedback can tell us. From eligible candidates, choose one, read its feedback, and update priorities before the next choice. Evaluate the adaptive choices against a fixed ranking under the same candidate set and budget.</desc>
+  <defs>
+    <marker id="adaptive-search-arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 Z" fill="#557674"/></marker>
+    <marker id="adaptive-search-arrow-focus" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 Z" fill="#386f9c"/></marker>
+  </defs>
+  <rect width="1040" height="470" fill="#f8faf5"/>
+  <text x="32" y="48" fill="#456d69" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">CONCEPTUAL WORKFLOW  /  ADAPTIVE SEARCH</text>
+  <text x="32" y="80" fill="#172927" font-family="Georgia, Times New Roman, serif" font-size="26">Feedback can change the next choice.</text>
+
+  <g fill="none" stroke="#557674" stroke-width="2" marker-end="url(#adaptive-search-arrow)">
+    <path d="M208 166 H232"/>
+    <path d="M408 166 H432"/>
+    <path d="M608 166 H632"/>
+    <path d="M808 166 H832"/>
+  </g>
+  <path d="M920 224 V280 Q920 288 912 288 H528 Q520 288 520 280 V224" fill="none" stroke="#386f9c" stroke-width="2.5" marker-end="url(#adaptive-search-arrow-focus)"/>
+  <rect x="668" y="247" width="116" height="24" rx="4" fill="#f8faf5"/>
+  <text x="726" y="263" text-anchor="middle" fill="#386f9c" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">NEXT CHOICE</text>
+
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <g>
+      <rect x="32" y="108" width="176" height="116" rx="8" fill="#ffffff" stroke="#b9cbc1"/>
+      <text x="48" y="136" fill="#4b625f" font-size="11" font-weight="700" letter-spacing="1.4">01 / DEFINE</text>
+      <text x="48" y="170" fill="#172927" font-size="17" font-weight="650">Frame question</text>
+      <text x="48" y="196" fill="#4b625f" font-size="12">What feedback means</text>
+    </g>
+    <g>
+      <rect x="232" y="108" width="176" height="116" rx="8" fill="#ffffff" stroke="#b9cbc1"/>
+      <text x="248" y="136" fill="#4b625f" font-size="11" font-weight="700" letter-spacing="1.4">02 / SPACE</text>
+      <text x="248" y="170" fill="#172927" font-size="17" font-weight="650">Candidate pool</text>
+      <text x="248" y="196" fill="#4b625f" font-size="12">Within the constraints</text>
+    </g>
+    <g>
+      <rect x="432" y="108" width="176" height="116" rx="8" fill="#ffffff" stroke="#b9cbc1"/>
+      <text x="448" y="136" fill="#4b625f" font-size="11" font-weight="700" letter-spacing="1.4">03 / SELECT</text>
+      <text x="448" y="170" fill="#172927" font-size="17" font-weight="650">Choose next</text>
+      <text x="448" y="196" fill="#4b625f" font-size="12">From current priorities</text>
+    </g>
+    <g>
+      <rect x="632" y="108" width="176" height="116" rx="8" fill="#e6f0ef" stroke="#386f9c" stroke-width="1.5"/>
+      <text x="648" y="136" fill="#315f75" font-size="11" font-weight="700" letter-spacing="1.4">04 / FEEDBACK</text>
+      <text x="648" y="170" fill="#172927" font-size="17" font-weight="650">Read the signal</text>
+      <text x="648" y="196" fill="#315f75" font-size="12">Available computational</text>
+      <text x="648" y="212" fill="#315f75" font-size="12">or screening feedback</text>
+    </g>
+    <g>
+      <rect x="832" y="108" width="176" height="116" rx="8" fill="#ffffff" stroke="#b9cbc1"/>
+      <text x="848" y="136" fill="#4b625f" font-size="11" font-weight="700" letter-spacing="1.4">05 / ADAPT</text>
+      <text x="848" y="170" fill="#172927" font-size="17" font-weight="650">Update priorities</text>
+      <text x="848" y="196" fill="#4b625f" font-size="12">Use what is now known</text>
+    </g>
+  </g>
+
+  <rect x="32" y="340" width="976" height="90" rx="8" fill="#edf4ef" stroke="#b9cbc1"/>
+  <text x="56" y="367" fill="#456d69" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">EVALUATE THE IDEA</text>
+  <text x="56" y="398" fill="#172927" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="600">Compare adaptive choices with a fixed ranking.</text>
+  <text x="56" y="417" fill="#4b625f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13">Use the same eligible candidates, feedback definition, and evaluation budget.</text>
+</svg>
