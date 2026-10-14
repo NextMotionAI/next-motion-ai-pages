@@ -10,6 +10,7 @@ const blog = defineCollection({
     date: z.coerce.date(),
     author: z.string(),
     tags: z.array(z.string()),
+    project: z.enum(['peptide-mhc-binding']).optional(),
     published: z.boolean().default(true),
   }),
 });

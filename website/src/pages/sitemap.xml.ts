@@ -4,15 +4,12 @@ import { getPublishedPosts } from '../lib/posts';
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await getPublishedPosts();
-  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
   const paths = [
     '/',
-    '/approach',
-    '/projects',
-    '/journal',
-    ...(posts.length ? ['/journal/archive', '/journal/tags'] : []),
+    '/platform',
+    '/research',
+    '/research/peptide-mhc-binding',
     ...posts.map((post) => `/journal/${post.id}`),
-    ...tags.map((tag) => `/journal/tags/${tag}`),
   ];
   const origin = site ?? new URL('https://www.nextmotionai.com');
   const urls = paths.map((path) => `<url><loc>${escapeXml(new URL(path, origin).href)}</loc></url>`).join('');

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedPosts } from '../../lib/posts';
+
+const projectPosts = (await getPublishedPosts())
+  .filter((post) => post.data.project === 'peptide-mhc-binding')
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const [latestProjectPost] = projectPosts;
+const firstNoteId = '2026-10-02-learning-from-feedback-in-peptide-discovery';
+const otherProjectPosts = projectPosts.filter((post) => post.id !== firstNoteId && post.id !== latestProjectPost?.id);
+---
+
+<BaseLayout
+  title="Peptide–MHC Binding"
+  description="Follow Next Motion AI's first research project in peptide–MHC binding and read its latest notes."
+>
+  <main id="main-content">
+    <section class="research-focus" id="first-project" aria-labelledby="biology-heading">
+      <div class="container research-focus-grid">
+        <div class="research-biology">
+          <a class="research-back" href="/research">← All research</a>
+          <p class="eyebrow"><span class="eyebrow-line"></span> FIRST PROJECT</p>
+          <h1 id="biology-heading">Why study <em>peptide–MHC binding?</em></h1>
+          <p>MHC proteins can bind short peptide fragments and display them for immune surveillance. Which peptides bind depends in part on the MHC variant. That gives our first project a defined question: can feedback help choose which peptides to evaluate next?</p>
+          <a class="text-link research-first-note" href={`/journal/${firstNoteId}`}>Read the first research note <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="project-figure">
+          <img src="/img/peptide-mhc-ribbon.webp" alt="Illustrative blue and teal ribbons suggesting an MHC binding groove, with a coral peptide strand between them" width="1536" height="1024" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="research-roadmap section-space" id="notes" aria-labelledby="roadmap-heading">
+      <div class="container">
+        <div class="roadmap-intro">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> RESEARCH ROADMAP</p>
+            <h2 id="roadmap-heading">Where <em>we are.</em></h2>
+          </div>
+          <p>This is exploratory computational research. Published notes describe the question and a strong fixed ranking baseline. The next research stage is being scoped.</p>
+        </div>
+
+        <ol class="roadmap-milestones" aria-label="Peptide–MHC binding research milestones">
+          <li class="roadmap-milestone">
+            <div class="roadmap-card">
+              <p class="roadmap-step">01 <span aria-hidden="true">/</span> QUESTION FRAMED</p>
+              <h3>A focused starting point</h3>
+              <p>Ask whether feedback can improve computational peptide discovery, and define what evidence would count.</p>
+              <a class="roadmap-link" href={`/journal/${firstNoteId}`}>Read the opening note <span aria-hidden="true">↗</span></a>
+            </div>
+          </li>
+          <li class="roadmap-milestone">
+            <div class="roadmap-card">
+              <p class="roadmap-step">02 <span aria-hidden="true">/</span> SCREENING TASK</p>
+              <h3>A baseline to beat</h3>
+              <p>A screen-replay task and strong fixed ranking baseline make the feedback question testable.</p>
+              {latestProjectPost && <article class="research-progress-latest">
+                <p class="research-progress-meta">LATEST NOTE <span aria-hidden="true">·</span> <time datetime={latestProjectPost.data.date.toISOString().slice(0, 10)}>{latestProjectPost.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></p>
+                <h4><a href={`/journal/${latestProjectPost.id}`}>{latestProjectPost.data.title} <span aria-hidden="true">↗</span></a></h4>
+              </article>}
+            </div>
+          </li>
+          <li class="roadmap-milestone roadmap-milestone-current">
+            <div class="roadmap-card">
+              <p class="roadmap-step">03 <span aria-hidden="true">/</span> CURRENT FOCUS</p>
+              <h3>Choose the next study</h3>
+              <p>An internal method assessment is complete. We’re deciding what to test next.</p>
+              <a class="roadmap-link" href="/journal">Follow published updates <span aria-hidden="true">↗</span></a>
+            </div>
+          </li>
+        </ol>
+
+        <p class="roadmap-limit">Binding alone does not establish that a peptide is presented on a cell, recognized by T cells, or useful as a medicine. Those questions call for other evidence.</p>
+
+        {otherProjectPosts.length > 0 && <div class="roadmap-more-notes">
+          <h3>More project notes</h3>
+          <ul>{otherProjectPosts.map((post) => <li><a href={`/journal/${post.id}`}>{post.data.title}</a></li>)}</ul>
+        </div>}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Reinforcement Learning Platform" description="Next Motion AI is building a reinforcement learning platform for biology, beginning with a peptide–MHC binding project.">
+  <main id="main-content">
+    <section class="approach-hero">
+      <div class="container approach-hero-grid">
+        <div class="approach-intro">
+          <p class="eyebrow"><span class="eyebrow-line"></span> THE PLATFORM</p>
+          <h1>Building a learning platform <em>for biology.</em></h1>
+          <p>We’re building a reinforcement learning platform to help explore large biological search spaces through sequential choices and feedback. Our peptide–MHC binding project is the first place we’re testing that approach.</p>
+        </div>
+        <div class="approach-library" aria-hidden="true">
+          <div class="library-sheet">
+            <div class="library-head"><span>BIOLOGICAL CANDIDATE SPACE</span><span>SEARCH / LEARN</span></div>
+            <div class="candidate-grid">
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate selected"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate selected"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+              <span class="candidate selected"></span>
+              <span class="candidate"></span>
+              <span class="candidate"></span>
+            </div>
+            <div class="library-selection"><span class="selection-token"></span><span>PRIORITIZE A TEST SET</span></div>
+          </div>
+          <span class="approach-library-label">CONCEPTUAL CANDIDATE LIBRARY</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-problem section-space" aria-labelledby="problem-heading">
+      <div class="container approach-problem-grid">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE BIOLOGICAL QUESTION</p>
+        <div>
+          <h2 id="problem-heading" class="display-heading">What can the feedback <em>tell us?</em></h2>
+          <p class="section-lede">The platform starts with a biological question, an eligible candidate space, and a clear account of what the available feedback means. Our first project, peptide–MHC binding, gives us a concrete way to develop and test that loop. Computational scores can guide exploration, but they do not establish what happens in a cell.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-process section-space" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-heading-row">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span> THE LEARNING LOOP</p><h2 id="process-heading" class="display-heading">How we test <em>adaptive search.</em></h2></div>
+          <p>We’re developing a process for choosing candidates, reading feedback, and updating priorities. Each project must test whether those adaptive choices improve on simpler strategies.</p>
+        </div>
+        <figure class="approach-diagram">
+          <picture>
+            <source media="(max-width: 760px)" srcset="/img/diagrams/adaptive-search-loop-mobile.svg" width="360" height="860" />
+            <img src="/img/diagrams/adaptive-search-loop.svg" width="1040" height="470" loading="lazy" decoding="async" alt="Conceptual feedback loop: define the question, consider eligible candidates, choose one, read available feedback, then update priorities for the next choice." />
+          </picture>
+          <figcaption>Define what the feedback can tell us before searching. Then compare adaptive choices with a fixed ranking under the same candidate set and evaluation budget. Computational feedback guides priorities; biological outcomes require separate evidence.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="approach-evidence section-space" aria-labelledby="evidence-heading">
+      <div class="container approach-evidence-grid">
+        <div><p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> EVIDENCE AND ITS LIMITS</p><h2 id="evidence-heading">A promising score is <em>a starting point.</em></h2></div>
+        <div><p>Computational predictions can guide priorities, but they are not measurements of biological outcomes. Fair comparisons must show whether adaptation helps, and biological claims require the right experimental evidence.</p><a class="text-link approach-evidence-link" href="/research/peptide-mhc-binding">Explore our first project <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -15,10 +15,10 @@ export async function getStaticPaths() {
 const { tag, posts } = Astro.props;
 ---
 
-<BaseLayout title={`Posts tagged ${tag}`} description={`Next Motion AI posts tagged ${tag}.`}>
+<BaseLayout title={`Research notes tagged ${tag}`} description={`Next Motion AI research notes tagged ${tag}.`}>
   <main id="main-content" class="container article-shell">
     <a class="back-link" href="/journal/tags">← Tags</a>
-    <h1 class="page-heading">Posts tagged {tag}</h1>
+    <h1 class="page-heading">Research notes tagged {tag}</h1>
     {posts.length ? <PostList posts={posts} /> : <p>No research notes published yet.</p>}
   </main>
 </BaseLayout>

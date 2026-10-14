@@ -11,7 +11,7 @@ export async function getStaticPaths() {
     ...tags.map((tag) => `tags/${tag}`),
     ...posts.map((post) => post.id),
   ];
-  return paths.map((path) => ({ params: { path }, props: { destination: `/journal/${path}` } }));
+  return paths.map((path) => ({ params: { path }, props: { destination: path === 'archive' ? '/research/peptide-mhc-binding' : `/journal/${path}` } }));
 }
 
 const { destination } = Astro.props;

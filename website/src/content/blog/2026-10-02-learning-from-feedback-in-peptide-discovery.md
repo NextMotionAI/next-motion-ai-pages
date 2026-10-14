@@ -4,6 +4,7 @@ description: A first research note on sequential decisions, peptide–MHC bindin
 date: 2026-10-02
 author: Peter Shen
 tags: [research, peptide-discovery]
+project: peptide-mhc-binding
 published: true
 ---
 

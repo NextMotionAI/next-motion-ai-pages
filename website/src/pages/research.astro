@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Research"
+  description="Explore Next Motion AI's research in reinforcement learning, engineering, and biology, beginning with peptide–MHC binding."
+>
+  <main id="main-content">
+    <section class="research-landing" aria-labelledby="research-heading">
+      <div class="container research-landing-content">
+        <p class="eyebrow"><span class="eyebrow-line"></span> RESEARCH</p>
+        <h1 id="research-heading">Research at <em>Next Motion AI.</em></h1>
+        <p>Our research can span algorithm design, RL engineering, and the automated lab systems that could provide biological feedback. Peptide–MHC binding is our first focused project.</p>
+      </div>
+    </section>
+
+    <section class="research-index section-space" aria-labelledby="research-projects-heading">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line"></span> CURRENT PROJECT</p>
+        <h2 id="research-projects-heading" class="display-heading">The work <em>underway.</em></h2>
+        <article class="research-index-card" id="first-project">
+          <div class="research-index-copy">
+            <p class="research-index-number">PROJECT 01</p>
+            <h3>Peptide–MHC binding</h3>
+            <p>Our first project examines whether feedback can improve which peptide candidates we choose to evaluate next. A screen-replay task lets us compare adaptive choices with a strong fixed ranking under the same query budget.</p>
+            <a class="text-link" href="/research/peptide-mhc-binding">Explore the project <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure class="research-index-figure">
+            <img src="/img/peptide-mhc-ribbon.webp" alt="Illustrative blue and teal ribbons suggesting an MHC binding groove, with a coral peptide strand between them" width="1536" height="1024" loading="lazy" />
+          </figure>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

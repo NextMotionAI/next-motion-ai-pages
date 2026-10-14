@@ -5,14 +5,13 @@ import test from 'node:test';
 
 const dist = new URL('../dist/', import.meta.url).pathname;
 const routes = new Map([
-  ['index.html', 'Reinforcement learning for biological discovery'],
+  ['index.html', 'Building a reinforcement learning platform for biology'],
   ['markdown-page.html', 'Markdown page example'],
-  ['approach.html', 'The Challenge'],
-  ['projects.html', 'peptide–MHC binding'],
-  ['journal.html', 'Can learning from feedback improve peptide discovery?'],
+  ['platform.html', 'reinforcement learning platform'],
+  ['research.html', 'Research at'],
+  ['research/peptide-mhc-binding.html', 'peptide–MHC binding'],
   ['journal/2026-10-02-learning-from-feedback-in-peptide-discovery.html', 'A computational prediction is not an experimental measurement.'],
   ['journal/welcome.html', 'Welcome to Next Motion AI homepage'],
-  ['journal/archive.html', 'Can learning from feedback improve peptide discovery?'],
   ['journal/tags.html', 'peptide discovery'],
   ['journal/tags/peptide-discovery.html', 'Can learning from feedback improve peptide discovery?'],
   ['journal/tags/news.html', 'No research notes published yet'],
@@ -21,32 +20,47 @@ const routes = new Map([
 
 test('navigation routes use the names shown on the site', () => {
   const home = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.match(home, /href="\/approach"[^>]*>Approach<\/a>/);
-  assert.match(home, /href="\/projects"[^>]*>Projects<\/a>/);
-  assert.match(home, /href="\/journal"[^>]*>Journal<\/a>/);
-  assert.match(home, /href="\/approach"[^>]*>Explore our approach/);
-  assert.ok(existsSync(join(dist, 'approach.html')));
-  assert.ok(existsSync(join(dist, 'journal.html')));
-  assert.match(readFileSync(join(dist, 'approach.html'), 'utf8'), /href="\/approach" aria-current="page">Approach<\/a>/);
+  assert.match(home, /href="\/platform"[^>]*>Platform<\/a>/);
+  assert.match(home, /<details class="nav-dropdown"[\s\S]*?<summary>Research/);
+  assert.match(home, /href="\/research"[^>]*>Overview<\/a>/);
+  assert.match(home, /href="\/research\/peptide-mhc-binding"[^>]*>Peptide–MHC binding<\/a>/);
+  assert.match(home, /href="\/platform"[^>]*>Explore the platform/);
+  assert.ok(existsSync(join(dist, 'platform.html')));
+  assert.ok(existsSync(join(dist, 'research.html')));
+  assert.ok(existsSync(join(dist, 'research/peptide-mhc-binding.html')));
+  assert.match(readFileSync(join(dist, 'platform.html'), 'utf8'), /href="\/platform" aria-current="page">Platform<\/a>/);
 
-  const journal = readFileSync(join(dist, 'journal.html'), 'utf8');
-  assert.match(journal, /href="\/journal\/2026-10-02-learning-from-feedback-in-peptide-discovery"/);
+  const research = readFileSync(join(dist, 'research.html'), 'utf8');
+  assert.match(research, /<h1 id="research-heading">Research at <em>Next Motion AI\.<\/em><\/h1>/);
+  assert.match(research, /algorithm design/);
+  assert.match(research, /RL engineering/);
+  assert.match(research, /automated lab systems/);
+  assert.doesNotMatch(research, /Each project gives us a defined question/);
+  assert.match(research, /href="\/research\/peptide-mhc-binding"[^>]*>Explore the project/);
+  assert.doesNotMatch(research, /class="research-focus"/);
+  assert.match(readFileSync(join(dist, 'research/peptide-mhc-binding.html'), 'utf8'), /href="\/journal\/2026-10-02-learning-from-feedback-in-peptide-discovery"/);
   assert.ok(existsSync(join(dist, 'journal/archive.html')));
   assert.ok(existsSync(join(dist, 'journal/tags.html')));
   assert.ok(existsSync(join(dist, 'journal/tags/peptide-discovery.html')));
   assert.ok(existsSync(join(dist, 'journal/2026-10-02-learning-from-feedback-in-peptide-discovery.html')));
 
   const sitemap = readFileSync(join(dist, 'sitemap.xml'), 'utf8');
-  assert.match(sitemap, /https:\/\/www\.nextmotionai\.com\/approach<\/loc>/);
-  assert.match(sitemap, /https:\/\/www\.nextmotionai\.com\/journal<\/loc>/);
+  assert.match(sitemap, /https:\/\/www\.nextmotionai\.com\/platform<\/loc>/);
+  assert.match(sitemap, /https:\/\/www\.nextmotionai\.com\/research<\/loc>/);
+  assert.match(sitemap, /https:\/\/www\.nextmotionai\.com\/research\/peptide-mhc-binding<\/loc>/);
+  assert.doesNotMatch(sitemap, /https:\/\/www\.nextmotionai\.com\/(?:projects|journal)<\/loc>/);
   assert.doesNotMatch(sitemap, /https:\/\/www\.nextmotionai\.com\/(?:docs\/who_we_are|blog)(?:<|\/)/);
 });
 
 test('old page addresses point to the matching new routes', () => {
   const aliases = new Map([
-    ['docs/who_we_are.html', '/approach'],
-    ['blog.html', '/journal'],
-    ['blog/archive.html', '/journal/archive'],
+    ['docs/who_we_are.html', '/platform'],
+    ['approach.html', '/platform'],
+    ['projects.html', '/research'],
+    ['journal.html', '/research/peptide-mhc-binding'],
+    ['journal/archive.html', '/research/peptide-mhc-binding'],
+    ['blog.html', '/research/peptide-mhc-binding'],
+    ['blog/archive.html', '/research/peptide-mhc-binding'],
     ['blog/tags.html', '/journal/tags'],
     ['blog/tags/peptide-discovery.html', '/journal/tags/peptide-discovery'],
     ['blog/2026-10-02-learning-from-feedback-in-peptide-discovery.html', '/journal/2026-10-02-learning-from-feedback-in-peptide-discovery'],
@@ -76,40 +90,55 @@ test('home page retains site metadata, navigation, and analytics', () => {
   assert.match(html, /<meta name="description"/);
   assert.match(html, /name="description" content="[^"]*peptide–MHC binding/);
   assert.equal(html.match(/<link rel="canonical" href="([^"]+)"/)?.[1], 'https://www.nextmotionai.com/');
-  assert.match(html, /href="\/approach"/);
-  assert.match(html, /href="\/projects"/);
-  assert.match(html, /href="\/journal"/);
+  assert.match(html, /href="\/platform"/);
+  assert.match(html, /href="\/research"/);
   assert.doesNotMatch(html, /href="\/about"/);
   assert.match(html, /G-YLHJEZJCWG/);
 });
 
 test('public homepage introduces exploratory research and a working contact path', () => {
   const html = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.match(html, /<h1[^>]*>[^<]*Reinforcement learning for biological discovery/);
+  assert.match(html, /<h1[^>]*>[^<]*Building a reinforcement learning platform for biology/);
+  assert.doesNotMatch(html, /NEXT MOTION AI \/ PLATFORM IN DEVELOPMENT/);
   assert.match(html, /peptide–MHC binding/);
-  assert.match(html, /href="\/projects"[^>]*>Our first research focus/);
-  assert.match(html, /href="\/approach"[^>]*>Explore our approach/);
-  assert.match(html, /href="mailto:contact@nextmotionai\.com"/);
+  assert.match(html, /<section class="home-project[^\"]*"[\s\S]*href="\/research\/peptide-mhc-binding"[^>]*>Explore the project/);
+  assert.match(html, /href="\/platform"[^>]*>Explore the platform/);
+  assert.equal(html.match(/href="mailto:contact@nextmotionai\.com"/g)?.length, 2);
+  assert.doesNotMatch(html, /Scroll to explore|EVIDENCE FOR THE PLATFORM|START A CONVERSATION/i);
   assert.doesNotMatch(html, /WeChat|Discord/);
 });
 
-test('approach copy describes research without exposing internal study details', () => {
-  const html = readFileSync(join(dist, 'approach.html'), 'utf8');
-  assert.match(html, /<title>Reinforcement Learning Approach \| Next Motion AI<\/title>/);
+test('homepage and first project surface the same latest project note', () => {
+  const home = readFileSync(join(dist, 'index.html'), 'utf8');
+  const project = readFileSync(join(dist, 'research/peptide-mhc-binding.html'), 'utf8');
+  const homeLatest = home.match(/<section class="home-project[^\"]*"[\s\S]*?<h3[^>]*><a href="([^"]+)"/);
+  const projectLatest = project.match(/<article class="research-progress-latest"[\s\S]*?<h4[^>]*><a href="([^"]+)"/);
+
+  assert.ok(homeLatest, 'homepage should feature a research note');
+  assert.ok(projectLatest, 'project should link to its latest note');
+  assert.equal(homeLatest[1], projectLatest[1]);
+});
+
+test('platform page describes the developing platform and its first project', () => {
+  const html = readFileSync(join(dist, 'platform.html'), 'utf8');
+  assert.match(html, /<title>Reinforcement Learning Platform \| Next Motion AI<\/title>/);
+  assert.match(html, /building a reinforcement learning platform/i);
   assert.match(html, /peptide–MHC binding/i);
   assert.match(html, /prioritiz/i);
   assert.match(html, /experimental/i);
   assert.doesNotMatch(html, /one (?:question|candidate) at a time|one by one/i);
-  assert.match(html, /href="\/projects"/);
+  assert.match(html, /href="\/research\/peptide-mhc-binding"/);
+  assert.match(html, /THE PLATFORM<\/p>/);
+  assert.doesNotMatch(html, /THE PLATFORM \/ IN DEVELOPMENT/);
   assert.doesNotMatch(html, /is a reinforcement learning \(RL\) platform/i);
   assert.doesNotMatch(html, /\b(?:HLA|allele|MHCflurry|PPO)\b/i);
 });
 
-test('journal highlights the first research note and keeps the legacy draft out of listings', () => {
-  const html = readFileSync(join(dist, 'journal.html'), 'utf8');
+test('project page lists its notes and keeps the legacy draft out of listings', () => {
+  const html = readFileSync(join(dist, 'research/peptide-mhc-binding.html'), 'utf8');
   assert.match(html, /href="\/journal\/2026-10-02-learning-from-feedback-in-peptide-discovery"/);
   assert.doesNotMatch(html, /No research notes published yet|Welcome to Next Motion AI homepage/);
-  for (const file of ['journal/archive.html', 'journal/tags.html', 'journal/tags/news.html']) {
+  for (const file of ['journal/tags.html', 'journal/tags/news.html']) {
     const page = readFileSync(join(dist, file), 'utf8');
     assert.doesNotMatch(page, /Welcome to Next Motion AI homepage/);
   }
@@ -126,18 +155,61 @@ test('first research note has article metadata and states its current limits', (
   assert.doesNotMatch(html, /name="robots" content="noindex"/);
 });
 
-test('projects page describes a research question and its limits', () => {
-  const html = readFileSync(join(dist, 'projects.html'), 'utf8');
-  assert.match(html, /<title>Peptide–MHC Binding Research \| Next Motion AI<\/title>/);
+test('project page describes the first project and its limits', () => {
+  const html = readFileSync(join(dist, 'research/peptide-mhc-binding.html'), 'utf8');
+  assert.match(html, /<title>Peptide–MHC Binding \| Next Motion AI<\/title>/);
   assert.match(html, /peptide–MHC binding/);
+  assert.match(html, /first project/i);
   assert.match(html, /exploratory computational research/i);
   assert.match(html, /binding alone does not establish/i);
   assert.doesNotMatch(html, /\b(?:MHCflurry|PPO|training budget|candidate length)\b/i);
   const home = readFileSync(join(dist, 'index.html'), 'utf8');
   assert.match(home, /peptide–MHC binding/);
   assert.doesNotMatch(home, /\b(?:MHCflurry|PPO|training budget|candidate length)\b/i);
-  assert.match(readFileSync(join(dist, 'sitemap.xml'), 'utf8'), /https:\/\/www\.nextmotionai\.com\/projects/);
+  assert.match(readFileSync(join(dist, 'sitemap.xml'), 'utf8'), /https:\/\/www\.nextmotionai\.com\/research/);
   assert.doesNotMatch(readFileSync(join(dist, 'sitemap.xml'), 'utf8'), /\/about/);
+});
+
+test('project page and notes link to each other', () => {
+  const project = readFileSync(join(dist, 'research/peptide-mhc-binding.html'), 'utf8');
+  const latestNote = project.match(/<article class="research-progress-latest"[\s\S]*?<h4[^>]*><a href="([^"]+)"/);
+
+  assert.ok(latestNote);
+  assert.ok(project.includes(`href="${latestNote[1]}"`), 'project should point to its latest note');
+  assert.doesNotMatch(project, /Follow the <em>work/);
+  assert.doesNotMatch(project, /class="project-outro/);
+  for (const slug of ['2026-10-02-learning-from-feedback-in-peptide-discovery', '2026-10-12-strong-baseline-peptide-screening']) {
+    const note = readFileSync(join(dist, 'journal', `${slug}.html`), 'utf8');
+    assert.match(note, /href="\/research\/peptide-mhc-binding"[^>]*>Peptide–MHC binding project<\/a>/);
+  }
+});
+
+test('project page explains the biology before the first project in one section', () => {
+  const html = readFileSync(join(dist, 'research/peptide-mhc-binding.html'), 'utf8');
+  const sections = [...html.matchAll(/<section\b[^>]*>[\s\S]*?<\/section>/g)].map(([section]) => section);
+  assert.equal(sections.length, 2, 'Research should have one compact context section and one roadmap section');
+  assert.match(sections[0], /class="research-focus"[^>]*id="first-project"/);
+  assert.match(sections[0], /FIRST PROJECT/);
+  assert.match(sections[0], /Why study <em>peptide–MHC binding\?<\/em>/);
+  assert.match(sections[0], /MHC proteins can bind short peptide fragments/);
+  assert.match(sections[0], /href="\/journal\/2026-10-02-learning-from-feedback-in-peptide-discovery"/);
+  assert.doesNotMatch(sections[0], /<h2|class="research-project/);
+});
+
+test('project page highlights a three-milestone research roadmap', () => {
+  const html = readFileSync(join(dist, 'research/peptide-mhc-binding.html'), 'utf8');
+  const progress = html.match(/<section class="research-roadmap[^\"]*"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(progress);
+  assert.match(progress, /Where <em>we are\.<\/em>/);
+  assert.equal((progress.match(/<li class="roadmap-milestone/g) ?? []).length, 3);
+  assert.match(progress, /QUESTION FRAMED/);
+  assert.match(progress, /SCREENING TASK/);
+  assert.match(progress, /CURRENT FOCUS/);
+  assert.match(progress, /LATEST NOTE/);
+  assert.match(progress, /next research stage/);
+  assert.match(progress, /2026-10-12-strong-baseline-peptide-screening/);
+  assert.match(progress, /href="\/journal"/);
+  assert.doesNotMatch(html, /class="project-status|class="research-project/);
 });
 
 test('generated CNAME contains the live domain', () => {
@@ -165,7 +237,7 @@ test('existing XML feeds and sitemap remain available', () => {
   const atom = readFileSync(join(dist, 'journal/atom.xml'), 'utf8');
   assert.match(rss, /<item>.*learning-from-feedback-in-peptide-discovery/);
   assert.match(atom, /<entry>.*learning-from-feedback-in-peptide-discovery/);
-  assert.match(rss, /<channel>.*<link>https:\/\/www\.nextmotionai\.com\/journal<\/link>/);
+  assert.match(rss, /<channel>.*<link>https:\/\/www\.nextmotionai\.com\/research<\/link>/);
 });
 
 test('local links and assets in generated pages resolve', () => {

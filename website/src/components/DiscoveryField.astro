@@ -1,21 +1,22 @@
 <figure class="discovery-field">
   <div class="discovery-glow" aria-hidden="true"></div>
   <img
-    src="/img/biomolecular-sculpture.webp"
-    alt="Conceptual translucent biomolecular sculpture"
-    width="1254"
-    height="1254"
+    src="/img/biomolecular-hero-editorial.webp"
+    alt="Conceptual marine blue and teal biomolecular ribbons with a thin coral strand"
+    width="1536"
+    height="1024"
     fetchpriority="high"
   />
-  <figcaption>CONCEPTUAL BIOMOLECULAR FORM <span aria-hidden="true">↗</span></figcaption>
 </figure>
 
 <style>
-  .discovery-field { position: relative; width: min(100%, 650px); aspect-ratio: 1; margin: 0 auto; isolation: isolate; }
-  .discovery-glow { position: absolute; inset: 9% 3% 8%; z-index: -1; border-radius: 50%; background: radial-gradient(circle, #b7d8d6 0, #dceae1 43%, transparent 72%); filter: blur(18px); }
-  img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 34px 38px #325c6630); animation: sculpture-drift 9s ease-in-out infinite alternate; }
-  figcaption { position: absolute; right: 0; bottom: 7%; display: inline-flex; align-items: center; gap: .8rem; padding: .7rem .9rem; border: 1px solid #a7c5bf; border-radius: .35rem; background: #f5f8f0e8; color: #466c6b; font-size: .62rem; font-weight: 700; letter-spacing: .13em; backdrop-filter: blur(8px); }
-  figcaption span { font-size: 1rem; line-height: .5; }
-  @keyframes sculpture-drift { to { transform: translateY(-9px) rotate(1deg); } }
+  .discovery-field { position: relative; width: min(100%, 680px); aspect-ratio: 1; margin: 0 auto; isolation: isolate; }
+  .discovery-glow { position: absolute; inset: 8% 0 5%; z-index: -1; border-radius: 50%; background: radial-gradient(circle, #b6dbd9 0, #e2f0e9 45%, transparent 72%); filter: blur(26px); }
+  img { position: absolute; top: -7%; left: -8%; display: block; width: 116%; height: 116%; max-width: none; object-fit: contain; filter: drop-shadow(0 28px 38px #315c6533); animation: sculpture-drift 10s ease-in-out infinite alternate; }
+  @keyframes sculpture-drift { to { transform: translateY(-7px) rotate(.6deg); } }
+  @media (max-width: 760px) {
+    .discovery-field { width: min(100%, 500px); margin-top: .5rem; }
+    img { top: -10%; left: -13%; width: 126%; height: 126%; }
+  }
   @media (prefers-reduced-motion: reduce) { img { animation: none; } }
 </style>

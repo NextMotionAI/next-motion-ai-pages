@@ -17,11 +17,9 @@ const { posts } = Astro.props;
           {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
         </time>
         · {post.data.author}
+        {post.data.project === 'peptide-mhc-binding' && <> · <a href="/research/peptide-mhc-binding">Peptide–MHC binding project</a></>}
       </p>
       <p>{post.data.description}</p>
-      <p class="tag-list">
-        {post.data.tags.map((tag) => <a class="tag" href={`/journal/tags/${tag}`}>{tag.replaceAll('-', ' ')}</a>)}
-      </p>
     </article>
   ))}
 </div>

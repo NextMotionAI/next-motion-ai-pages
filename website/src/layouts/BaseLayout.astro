@@ -15,6 +15,7 @@ const canonicalPath = Astro.url.pathname === '/index.html'
 const canonical = new URL(canonicalPath, Astro.site).href;
 const socialImage = new URL('/img/logo_512.png', Astro.site).href;
 const year = new Date().getFullYear();
+const researchActive = canonicalPath === '/research' || canonicalPath.startsWith('/research/') || canonicalPath.startsWith('/journal/');
 ---
 
 <!doctype html>
@@ -30,8 +31,8 @@ const year = new Date().getFullYear();
     <meta property="og:image" content={socialImage} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/img/logo_96.png" />
-    <link rel="alternate" type="application/rss+xml" title="Next Motion AI Journal RSS" href="/journal/rss.xml" />
-    <link rel="alternate" type="application/atom+xml" title="Next Motion AI Journal Atom" href="/journal/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Next Motion AI Research Notes RSS" href="/journal/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Next Motion AI Research Notes Atom" href="/journal/atom.xml" />
     <title>{pageTitle}</title>
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-YLHJEZJCWG"></script>
     <script is:inline>
@@ -50,10 +51,15 @@ const year = new Date().getFullYear();
           <span>Next Motion <span class="brand-ai">AI</span></span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="/approach" aria-current={Astro.url.pathname.replace(/\.html$/, '') === '/approach' ? 'page' : undefined}>Approach</a>
-          <a href="/projects" aria-current={Astro.url.pathname.startsWith('/projects') ? 'page' : undefined}>Projects</a>
-          <a href="/journal" aria-current={Astro.url.pathname.startsWith('/journal') ? 'page' : undefined}>Journal</a>
-          <a class="nav-contact" href="mailto:contact@nextmotionai.com">Contact <span aria-hidden="true">↗</span></a>
+          <a href="/platform" aria-current={Astro.url.pathname.replace(/\.html$/, '') === '/platform' ? 'page' : undefined}>Platform</a>
+          <details class="nav-dropdown" data-active={researchActive ? 'true' : undefined}>
+            <summary>Research<span class="nav-dropdown-chevron" aria-hidden="true"></span></summary>
+            <div class="nav-dropdown-menu">
+              <a href="/research" aria-current={canonicalPath === '/research' ? 'page' : undefined}>Overview</a>
+              <a href="/research/peptide-mhc-binding" aria-current={canonicalPath === '/research/peptide-mhc-binding' ? 'page' : undefined}>Peptide–MHC binding</a>
+            </div>
+          </details>
+          <a class="nav-contact" href="mailto:contact@nextmotionai.com">Contact</a>
         </nav>
       </div>
     </header>
@@ -62,18 +68,31 @@ const year = new Date().getFullYear();
       <div class="container footer-top">
         <div>
           <p class="eyebrow eyebrow-light">NEXT MOTION AI</p>
-          <p class="footer-statement">Exploring new ways to navigate biology.</p>
+          <p class="footer-statement">Building a reinforcement learning platform for biology.</p>
         </div>
-        <a class="footer-email" href="mailto:contact@nextmotionai.com">contact@nextmotionai.com <span aria-hidden="true">↗</span></a>
+        <a class="footer-email" href="mailto:contact@nextmotionai.com">contact@nextmotionai.com</a>
       </div>
       <div class="container footer-bottom">
         <p>© {year} Next Motion, Inc.</p>
         <nav aria-label="Footer navigation">
-          <a href="/approach">Approach</a>
-          <a href="/projects">Projects</a>
-          <a href="/journal">Journal</a>
+          <a href="/platform">Platform</a>
+          <a href="/research">Research</a>
         </nav>
       </div>
     </footer>
+    <script>
+      const researchMenu = document.querySelector<HTMLDetailsElement>('.nav-dropdown');
+      if (researchMenu) {
+        document.addEventListener('pointerdown', (event) => {
+          if (!researchMenu.contains(event.target as Node)) researchMenu.open = false;
+        });
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && researchMenu.open) {
+            researchMenu.open = false;
+            researchMenu.querySelector('summary')?.focus();
+          }
+        });
+      }
+    </script>
   </body>
 </html>

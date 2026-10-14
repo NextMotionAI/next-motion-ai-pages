@@ -22,3 +22,10 @@ From `website/`, use `npm ci` to install dependencies and `npm run start` to dev
 - Preserve existing public URLs unless a task explicitly changes them. Check changed pages locally, including mobile widths when UI is affected.
 - Treat statements about the company, product, and scientific capabilities as public claims; use approved copy or verify facts before adding them.
 - `npm run deploy` pushes the built site to GitHub Pages. Prepare and verify changes locally before running it; only deploy when the task explicitly calls for publishing.
+
+## Website visual direction
+
+- The homepage artwork at `website/public/img/biomolecular-hero-editorial.webp` is the reference for related protein graphics. These preferences come from the archived design discussion “Explore Isomorphic-inspired graphics” (October 2026).
+- Favor original, clean, high-fidelity sculptural ribbons with an open silhouette and thin strands or backbones. Use vivid blue, teal, and mint that fit the site palette, with coral as a small accent.
+- Avoid mixing ribbons with a globular mass, dense or messy protein blobs, and repeated textbook-style helices or diagram-like badges.
+- Keep illustrations of named biological subjects recognizable while clearly presenting them as illustrative, not as a research result. Check their composition at desktop and phone widths. If they move, keep motion subtle and provide a still state for reduced-motion settings.

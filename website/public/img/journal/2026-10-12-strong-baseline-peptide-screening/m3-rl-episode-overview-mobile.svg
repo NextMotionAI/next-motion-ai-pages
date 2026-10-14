@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="1070" viewBox="0 0 360 1070" role="img" aria-labelledby="replay-overview-mobile-title replay-overview-mobile-desc">
+  <title id="replay-overview-mobile-title">One budgeted peptide screen replay</title>
+  <desc id="replay-overview-mobile-desc">For one allele, a policy chooses an unqueried peptide from public information. A valid replay query uses one of 100 and reveals its recorded call from a hidden table. The campaign state updates; the policy continues while budget remains or the episode ends.</desc>
+  <defs>
+    <marker id="replay-overview-mobile-arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 Z" fill="#557674"/></marker>
+    <marker id="replay-overview-mobile-arrow-focus" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 Z" fill="#386f9c"/></marker>
+  </defs>
+  <rect width="360" height="1070" fill="#f8faf5"/>
+  <text x="28" y="35" fill="#456d69" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">SCREEN REPLAY  /  ONE ALLELE</text>
+  <text x="28" y="68" fill="#172927" font-family="Georgia, Times New Roman, serif" font-size="23">One budgeted campaign.</text>
+  <text x="28" y="91" fill="#4b625f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13">Up to 100 valid peptide queries</text>
+
+  <g fill="none" stroke="#557674" stroke-width="2" marker-end="url(#replay-overview-mobile-arrow)">
+    <path d="M180 188 V214"/>
+    <path d="M180 302 V332"/>
+    <path d="M180 420 V450"/>
+    <path d="M180 520 V550"/>
+    <path d="M180 638 V668"/>
+    <path d="M180 756 V784"/>
+    <path d="M180 900 V930"/>
+  </g>
+  <path d="M40 842 H24 Q16 842 16 834 V266 Q16 258 24 258 H28" fill="none" stroke="#386f9c" stroke-width="2.5" marker-end="url(#replay-overview-mobile-arrow-focus)"/>
+
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <g>
+      <rect x="28" y="114" width="304" height="74" rx="8" fill="#edf4ef" stroke="#b9cbc1"/>
+      <text x="44" y="138" fill="#456d69" font-size="11" font-weight="700" letter-spacing="1">PUBLIC INPUT</text>
+      <text x="44" y="164" fill="#172927" font-size="17" font-weight="600">Eligible peptide catalogue</text>
+      <text x="44" y="181" fill="#4b625f" font-size="12">Sequences, counts, and ranks</text>
+    </g>
+    <g>
+      <rect x="28" y="214" width="304" height="88" rx="8" fill="#ffffff" stroke="#b9cbc1"/>
+      <text x="44" y="239" fill="#456d69" font-size="11" font-weight="700" letter-spacing="1">01 / POLICY</text>
+      <text x="44" y="269" fill="#172927" font-size="17" font-weight="600">Choose an unqueried peptide</text>
+      <text x="44" y="289" fill="#4b625f" font-size="12">Or choose to stop</text>
+    </g>
+    <g>
+      <rect x="28" y="332" width="304" height="88" rx="8" fill="#ffffff" stroke="#b9cbc1"/>
+      <text x="44" y="357" fill="#456d69" font-size="11" font-weight="700" letter-spacing="1">02 / REPLAY</text>
+      <text x="44" y="387" fill="#172927" font-size="17" font-weight="600">Replay one valid query</text>
+      <text x="44" y="407" fill="#4b625f" font-size="12">Spend 1 of 100 queries</text>
+    </g>
+    <g>
+      <rect x="28" y="450" width="304" height="70" rx="8" fill="#ffffff" stroke="#78948c" stroke-dasharray="6 5"/>
+      <text x="44" y="475" fill="#456d69" font-size="11" font-weight="700" letter-spacing="1">HIDDEN SOURCE</text>
+      <text x="44" y="502" fill="#172927" font-size="17" font-weight="600">Recorded screen-call table</text>
+    </g>
+    <g>
+      <rect x="28" y="550" width="304" height="88" rx="8" fill="#e6f0ef" stroke="#386f9c" stroke-width="1.5"/>
+      <text x="44" y="575" fill="#315f75" font-size="11" font-weight="700" letter-spacing="1">03 / FEEDBACK</text>
+      <text x="44" y="605" fill="#172927" font-size="17" font-weight="600">Reveal one screen call</text>
+      <text x="44" y="625" fill="#315f75" font-size="12">Called or not called</text>
+    </g>
+    <g>
+      <rect x="28" y="668" width="304" height="88" rx="8" fill="#ffffff" stroke="#b9cbc1"/>
+      <text x="44" y="693" fill="#456d69" font-size="11" font-weight="700" letter-spacing="1">04 / OBSERVE</text>
+      <text x="44" y="723" fill="#172927" font-size="17" font-weight="600">Update campaign state</text>
+      <text x="44" y="743" fill="#4b625f" font-size="12">Earlier calls and budget left</text>
+    </g>
+  </g>
+  <path d="M180 784 L320 842 L180 900 L40 842 Z" fill="#ffffff" stroke="#386f9c" stroke-width="1.5"/>
+  <text x="180" y="838" text-anchor="middle" fill="#172927" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="600">Continue?</text>
+  <text x="180" y="859" text-anchor="middle" fill="#4b625f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12">Budget remains</text>
+  <rect x="37" y="799" width="42" height="20" rx="3" fill="#f8faf5"/>
+  <text x="58" y="814" text-anchor="middle" fill="#315f75" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700">YES</text>
+  <rect x="190" y="905" width="34" height="20" rx="3" fill="#f8faf5"/>
+  <text x="207" y="920" text-anchor="middle" fill="#4b625f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700">NO</text>
+  <rect x="88" y="930" width="184" height="70" rx="24" fill="#edf4ef" stroke="#b9cbc1"/>
+  <text x="180" y="957" text-anchor="middle" fill="#172927" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="600">Episode ends</text>
+  <text x="180" y="980" text-anchor="middle" fill="#4b625f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12">Stop or budget used</text>
+  <text x="28" y="1033" fill="#4b625f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12">Zero means “not called” in this screen,</text>
+  <text x="28" y="1051" fill="#4b625f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12">not measured nonbinding.</text>
+</svg>

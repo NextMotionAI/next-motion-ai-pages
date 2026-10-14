@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="m3-rl-episode-title m3-rl-episode-desc" id="m3-rl-episode-root">
+        <title id="m3-rl-episode-title">One peptide screen replay episode</title>
+        <desc id="m3-rl-episode-desc">For a training allele, a future policy selects an unqueried peptide from the public catalogue. A valid query reveals its hidden screen call and updates the campaign state; the policy continues with that feedback until it stops or the query budget ends.</desc>
+        <defs>
+      <style>#m3-rl-episode-root { color: #182b37; font-family: Helvetica, Arial, sans-serif; }
+      #m3-rl-episode-root .diagram-container { width: 100%; overflow-x: auto; }
+      #m3-rl-episode-root .diagram-container { overflow-x: visible; }</style>
+          <marker id="m3-rl-episode-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#47768b"/></marker>
+          <marker id="m3-rl-episode-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#278676"/></marker>
+          <marker id="m3-rl-episode-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#225f87"/></marker>
+        </defs>
+
+        <rect width="960" height="600" fill="#ffffff"/>
+        <text x="48" y="43" fill="#47768b" font-family="Menlo, Monaco, monospace" font-size="8" letter-spacing="1.6">SCREEN REPLAY  /  TRAINING ALLELE A*01:01</text>
+        <text x="48" y="76" fill="#182b37" font-family="Georgia, Times New Roman, serif" font-size="28">One allele, one budgeted campaign</text>
+
+        <!-- Primary path: public data, selection, query, feedback, updated state. -->
+        <line x1="182" y1="188" x2="182" y2="244" stroke="#47768b" stroke-width="1.6" marker-end="url(#m3-rl-episode-arrow)"/>
+        <line x1="308" y1="292" x2="354" y2="292" stroke="#47768b" stroke-width="1.6" marker-end="url(#m3-rl-episode-arrow)"/>
+        <line x1="606" y1="292" x2="652" y2="292" stroke="#278676" stroke-width="2" marker-end="url(#m3-rl-episode-arrow-accent)"/>
+        <line x1="778" y1="188" x2="778" y2="244" stroke="#47768b" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#m3-rl-episode-arrow)"/>
+        <line x1="778" y1="340" x2="778" y2="404" stroke="#278676" stroke-width="2" marker-end="url(#m3-rl-episode-arrow-accent)"/>
+        <line x1="652" y1="452" x2="566" y2="452" stroke="#47768b" stroke-width="1.6" marker-end="url(#m3-rl-episode-arrow)"/>
+
+        <!-- Explicit stop and budget exits. -->
+        <line x1="126" y1="340" x2="126" y2="404" stroke="#47768b" stroke-width="1.6" marker-end="url(#m3-rl-episode-arrow)"/>
+        <line x1="394" y1="452" x2="308" y2="452" stroke="#47768b" stroke-width="1.6" marker-end="url(#m3-rl-episode-arrow)"/>
+
+        <!-- A state-aware choice returns to the policy only while budget remains. -->
+        <path d="M 480 500 L 480 516 Q 480 524 472 524 L 40 524 Q 32 524 32 516 L 32 300 Q 32 292 40 292 L 56 292"
+              fill="none" stroke="#278676" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#m3-rl-episode-arrow-accent)"/>
+
+        <!-- Connector labels sit clear of their strokes. -->
+        <rect x="133" y="360" width="44" height="12" rx="2" fill="#ffffff"/>
+        <text x="155" y="369" fill="#47768b" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle" letter-spacing="0.5">STOP</text>
+        <rect x="314" y="433" width="62" height="12" rx="2" fill="#ffffff"/>
+        <text x="345" y="442" fill="#47768b" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle" letter-spacing="0.5">NO BUDGET</text>
+        <rect x="326" y="504" width="62" height="12" rx="2" fill="#ffffff"/>
+        <text x="357" y="513" fill="#278676" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle" letter-spacing="0.5">CONTINUE</text>
+
+        <!-- Public catalogue. -->
+        <rect x="56" y="112" width="252" height="76" rx="6" fill="#ffffff"/>
+        <rect x="56" y="112" width="252" height="76" rx="6" fill="#eef5f8" stroke="#225f87" stroke-width="1.2"/>
+        <rect x="68" y="122" width="50" height="14" rx="2" fill="#ffffff" stroke="#a3c0d0" stroke-width="0.8"/>
+        <text x="93" y="132" fill="#225f87" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle">PUBLIC</text>
+        <text x="76" y="156" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Eligible peptide catalogue</text>
+        <text x="76" y="174" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">9-mers · R0 counts · BA/EL ranks</text>
+
+        <!-- Hidden author calls. -->
+        <rect x="652" y="112" width="252" height="76" rx="6" fill="#ffffff"/>
+        <rect x="652" y="112" width="252" height="76" rx="6" fill="#f8fafb" stroke="#7f97a4" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <rect x="664" y="122" width="50" height="14" rx="2" fill="#ffffff" stroke="#a7b8c0" stroke-width="0.8"/>
+        <text x="689" y="132" fill="#5f7581" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle">HIDDEN</text>
+        <text x="672" y="156" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Author screen-call table</text>
+        <text x="672" y="174" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">read only for a valid query</text>
+
+        <!-- Future policy and environment step. -->
+        <rect x="56" y="244" width="252" height="96" rx="6" fill="#ffffff"/>
+        <rect x="56" y="244" width="252" height="96" rx="6" fill="#eef5f8" stroke="#225f87" stroke-width="1.2"/>
+        <rect x="68" y="256" width="54" height="14" rx="2" fill="#ffffff" stroke="#a3c0d0" stroke-width="0.8"/>
+        <text x="95" y="266" fill="#225f87" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle">POLICY</text>
+        <text x="76" y="294" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Choose an action</text>
+        <text x="76" y="314" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">unqueried index or stop</text>
+
+        <rect x="354" y="244" width="252" height="96" rx="6" fill="#ffffff"/>
+        <rect x="354" y="244" width="252" height="96" rx="6" fill="#eef5f8" stroke="#225f87" stroke-width="1.2"/>
+        <rect x="366" y="256" width="46" height="14" rx="2" fill="#ffffff" stroke="#a3c0d0" stroke-width="0.8"/>
+        <text x="389" y="266" fill="#225f87" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle">STEP</text>
+        <text x="374" y="294" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Replay a valid query</text>
+        <text x="374" y="314" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">spend 1 of 100 queries</text>
+
+        <rect x="652" y="244" width="252" height="96" rx="6" fill="#ffffff"/>
+        <rect x="652" y="244" width="252" height="96" rx="6" fill="#e7f5f1" stroke="#278676" stroke-width="1.5"/>
+        <rect x="664" y="256" width="72" height="14" rx="2" fill="#ffffff" stroke="#9bc9be" stroke-width="0.8"/>
+        <text x="700" y="266" fill="#278676" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle">FEEDBACK</text>
+        <text x="672" y="290" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Reveal one screen call</text>
+        <text x="672" y="307" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">TSDGQTLLY  +1 called</text>
+        <text x="672" y="323" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">PTAIYTLEY   0 not called</text>
+
+        <!-- Updated observation, continuation decision, terminal episode. -->
+        <rect x="652" y="404" width="252" height="96" rx="6" fill="#ffffff"/>
+        <rect x="652" y="404" width="252" height="96" rx="6" fill="#eef5f8" stroke="#225f87" stroke-width="1.2"/>
+        <rect x="664" y="416" width="62" height="14" rx="2" fill="#ffffff" stroke="#a3c0d0" stroke-width="0.8"/>
+        <text x="695" y="426" fill="#225f87" font-family="Menlo, Monaco, monospace" font-size="8" text-anchor="middle">OBSERVE</text>
+        <text x="672" y="454" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Update campaign state</text>
+        <text x="672" y="472" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">queried mask · earlier calls</text>
+        <text x="672" y="488" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">queries / actions remaining</text>
+
+        <polygon points="480,404 566,452 480,500 394,452" fill="#ffffff" stroke="#225f87" stroke-width="1.2"/>
+        <text x="480" y="450" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Budget</text>
+        <text x="480" y="466" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" text-anchor="middle">remains?</text>
+
+        <rect x="56" y="404" width="252" height="96" rx="30" fill="#ffffff"/>
+        <rect x="56" y="404" width="252" height="96" rx="30" fill="#f8fafb" stroke="#7f97a4" stroke-width="1.2"/>
+        <text x="182" y="450" fill="#182b37" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Episode ends</text>
+        <text x="182" y="468" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9" text-anchor="middle">stop or budget exhausted</text>
+
+        <line x1="48" y1="552" x2="912" y2="552" stroke="#d5e0e5" stroke-width="0.8"/>
+        <text x="48" y="574" fill="#3e5360" font-family="Menlo, Monaco, monospace" font-size="9">A zero denotes “not called” in this screen, not measured nonbinding.</text>
+      </svg>
