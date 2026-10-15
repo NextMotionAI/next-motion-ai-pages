@@ -2,7 +2,7 @@
 title: Welcome
 description: News and media from Next Motion AI.
 date: 2024-07-18
-author: Peter Shen
+author: NMAI Research Team
 tags: [news]
 published: false
 ---

@@ -2,7 +2,7 @@
 title: A strong baseline sets the bar for peptide screening
 description: A 100-query peptide screening replay reveals a strong fixed ranking baseline and a careful way to test whether feedback can improve on it.
 date: 2026-10-12
-author: Peter Shen
+author: NMAI Research Team
 tags: [research, peptide-discovery]
 project: peptide-mhc-binding
 published: true

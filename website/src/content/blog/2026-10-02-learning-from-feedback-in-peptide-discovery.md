@@ -2,7 +2,7 @@
 title: Can learning from feedback improve peptide discovery?
 description: A first research note on sequential decisions, peptide–MHC binding, and what it will take to evaluate learning from feedback.
 date: 2026-10-02
-author: Peter Shen
+author: NMAI Research Team
 tags: [research, peptide-discovery]
 project: peptide-mhc-binding
 published: true
